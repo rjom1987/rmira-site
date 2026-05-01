@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMIRA ADV · Mercado de Capitais · FIDC, Distressed, DCM</title>
+  <meta name="description" content="Boutique técnico em estruturação de FIDC, crédito distressed e DCM advisory. Engenharia jurídica para mercado de capitais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* ── Tokens ── */
+    :root {
+      --navy:   #0d2a4a;
+      --blue:   #1d98e4;
+      --bg:     #f8f8f6;
+      --text:   #0d2a4a;
+      --muted:  #6b7a8d;
+      --border: rgba(13,42,74,0.12);
+      --grid:   rgba(13,42,74,0.055);
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --sans:   'Inter', system-ui, sans-serif;
+      --mono:   'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ── Grid background helper ── */
+    .grid-bg {
+      background-image:
+        repeating-linear-gradient(0deg,   var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 44px),
+        repeating-linear-gradient(90deg,  var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 44px);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 52px;
+    }
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.14em;
+      color: var(--navy);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-rev {
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Section label ── */
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.16em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .sec-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* ── Hero ── */
+    #posicionamento {
+      min-height: calc(100vh - 52px);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-logo-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3.5rem 2.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-logo-bar img {
+      height: 140px;
+      width: auto;
+    }
+    /* fallback text logo if image missing */
+    .logo-fallback {
+      display: none;
+      text-align: center;
+    }
+    .logo-fallback .logo-mark {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
+    .logo-fallback .logo-sub {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: var(--blue);
+      margin-top: 0.25rem;
+    }
+
+    .hero-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-main {
+      padding: 4rem 3rem 4rem 2.5rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.16em;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--blue);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 500;
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 3rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--blue);
+    }
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-desc {
+      font-size: 0.875rem;
+      color: var(--navy);
+      line-height: 1.7;
+    }
+    .hero-promise {
+      border-left: 1px solid var(--border);
+      padding-left: 2rem;
+    }
+    .hero-promise-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .hero-promise p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    /* spec sheet sidebar */
+    .hero-spec {
+      padding: 2rem 1.75rem;
+    }
+    .spec-header {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .spec-key {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .spec-val {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      text-align: right;
+    }
+    .spec-status {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: var(--navy);
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* ── Generic section wrapper ── */
+    .section {
+      padding: 5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+    .section-desc {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--navy);
+      padding-top: 0.5rem;
+    }
+
+    /* ── Especialização cards ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .card {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card:last-child { border-right: none; }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1.625rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .card-desc {
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--navy);
+      flex: 1;
+    }
+    .card-rows {
+      border-top: 1px dashed var(--border);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .card-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      gap: 1rem;
+    }
+    .card-row-key { color: var(--muted); }
+    .card-row-val { color: var(--blue); text-align: right; }
+
+    /* ── Operação / fases ── */
+    #operacao { background: var(--bg); }
+    .phases-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .phase {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .phase:last-child { border-right: none; }
+    .phase-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .phase-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+    .phase-num {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .phase-connector {
+      position: absolute;
+      top: 2.5rem;
+      right: -12px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      z-index: 1;
+    }
+    .phase-title {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .phase-desc {
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .phase-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .phase-list li {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .phase-list li::before {
+      content: '—';
+      color: var(--blue);
+    }
+
+    /* ── Para Quem ── */
+    #para-quem { padding-bottom: 0; }
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+    .profile {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .profile:nth-child(even) { border-right: none; }
+    .profile-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .profile-num { color: var(--blue); }
+    .profile-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .profile-desc {
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .demanda-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .demanda-text {
+      font-size: 0.8125rem;
+      color: var(--blue);
+      line-height: 1.6;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border);
+    }
+    .exclusoes-bar {
+      padding: 1.25rem 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .exclusoes-bar strong {
+      color: var(--blue);
+      font-weight: 500;
+      margin-right: 0.25rem;
+    }
+
+    /* ── Insights ── */
+    #insights .section-header { margin-bottom: 2rem; }
+    .insights-list {
+      border-top: 1px solid var(--border);
+    }
+    .insight-row {
+      display: grid;
+      grid-template-columns: 140px 160px 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .insight-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .insight-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .insight-date {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+    }
+    .insight-cat {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding-top: 0.2rem;
+    }
+    .insight-content {}
+    .insight-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .insight-desc {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      color: var(--navy);
+    }
+    .insight-time {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    /* ── Contato ── */
+    #contato {
+      background: var(--navy);
+      color: #c8d8e8;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    #contato .sec-label { color: #6fa3c8; }
+    #contato .sec-label::before { background: #6fa3c8; }
+    #contato .section-title { color: #e8f0f8; }
+    #contato .section-desc { color: #9ab5cc; }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 5rem 2.5rem 4rem;
+    }
+    .contato-left {}
+    .contato-title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 400;
+      color: #e8f0f8;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .contato-title em {
+      font-style: italic;
+      color: #6fa3c8;
+    }
+    .contato-desc {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: #9ab5cc;
+    }
+    .contato-table {
+      display: flex;
+      flex-direction: column;
+    }
+    .contato-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: 2rem;
+    }
+    .contato-key {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: #6fa3c8;
+      white-space: nowrap;
+    }
+    .contato-val {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: #e0ecf4;
+      text-align: right;
+    }
+    .contato-val a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .contato-val a:hover { color: #ffffff; }
+    .contato-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-block {
+      width: 44px;
+      height: 44px;
+      background: #e8f0f8;
+      flex-shrink: 0;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: #6fa3c8;
+    }
+    .footer-blueprint {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      color: #4a6a84;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-spec { border-top: 1px solid var(--border); }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-promise { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+      .section-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .card { border-right: none; border-bottom: 1px solid var(--border); }
+      .phases-track { grid-template-columns: 1fr; }
+      .phase { border-right: none; border-bottom: 1px solid var(--border); }
+      .phase-connector { display: none; }
+      .profiles-grid { grid-template-columns: 1fr; }
+      .profile { border-right: none; }
+      .profile:nth-child(even) { border-right: none; }
+
+      .insight-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .insight-row > * { padding: 0; }
+
+      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+      .footer-blueprint { display: none; }
+      .section { padding: 3.5rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; gap: 1rem; }
+      .nav-links { display: none; }
+      .hero-logo-bar { padding: 2rem 1rem 1.5rem; }
+      .hero-logo-bar img { height: 90px; }
+      .hero-main { padding: 2.5rem 1rem; }
+      .section { padding: 3rem 1rem; }
+      .contato-grid { padding: 2.5rem 1rem; }
+      .contato-footer { padding: 1.25rem 1rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#posicionamento" class="nav-brand">RMIRA &middot; ADV</a>
+    <ul class="nav-links">
+      <li><a href="#especializacao">Especialização</a></li>
+      <li><a href="#operacao">Operação</a></li>
+      <li><a href="#para-quem">Para quem</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <span class="nav-rev">REV 2026.04</span>
+  </nav>
+
+  <!-- ── A.001 · POSICIONAMENTO ── -->
+  <section id="posicionamento">
+    <div class="hero-logo-bar">
+      <img src="logo.png" alt="RMIRA ADV" onerror="this.style.display='none';document.querySelector('.logo-fallback').style.display='block'">
+      <div class="logo-fallback">
+        <div class="logo-mark">RMIRA</div>
+        <div class="logo-sub">ADV &nbsp;·&nbsp; ADVISORY &nbsp;·&nbsp; ADVOCACY &nbsp;·&nbsp; ADVANCE</div>
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-main">
+        <div>
+          <div class="hero-tag">A.001 &middot; POSICIONAMENTO</div>
+          <h1 class="hero-title">
+            Engenharia jurídica<br>
+            para mercado<br>
+            <em>de capitais.</em>
+          </h1>
+        </div>
+        <div class="hero-bottom">
+          <p class="hero-desc">
+            Boutique técnico em estruturação de FIDC, crédito distressed e DCM advisory.
+            Cada mandato é tratado como projeto: diagnóstico regulatório, estruturação
+            da operação e execução documental — sem genéricos, sem volume, sem ruído.
+          </p>
+          <div class="hero-promise">
+            <div class="hero-promise-label">PROMESSA OPERACIONAL</div>
+            <p>Inteligência jurídica, projetada com a precisão de um blueprint.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-spec">
+        <div class="spec-header">SPEC SHEET &middot; 001</div>
+        <div class="spec-row">
+          <span class="spec-key">TIPO</span>
+          <span class="spec-val">Boutique</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">NICHO</span>
+          <span class="spec-val">Mercado de Capitais</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">ATUAÇÃO</span>
+          <span class="spec-val">BR &middot; SP / RJ</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">MANDATO</span>
+          <span class="spec-val">Recorrente / Project</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">MODELO</span>
+          <span class="spec-val">Retainer &middot; Project &middot; Success</span>
+        </div>
+        <div class="spec-status">
+          <span class="status-dot"></span>
+          ATIVO
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── B · ESPECIALIZAÇÃO ── -->
+  <section id="especializacao" class="section">
+    <div class="sec-label">SEC. B &middot; ESPECIALIZAÇÃO</div>
+    <div class="section-header">
+      <h2 class="section-title">Três frentes,<br>uma disciplina.</h2>
+      <p class="section-desc">
+        Toda atuação se ancora em mercado de capitais brasileiro. Mandatos fora do perímetro
+        técnico são recusados — não por escassez de oferta, mas por desenho operacional.
+        Profundidade vertical é a regra.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-meta"><span>B.001</span><span>REV.01</span></div>
+        <h3 class="card-title">Estruturação de FIDC</h3>
+        <p class="card-desc">
+          Constituição e revisão de fundos sob a RCVM 175/240. Modelagem de classes de cotas
+          seniores, subordinadas e mezanino, regulamento, contrato de cessão master,
+          política de investimento e parecer regulatório recorrente.
+        </p>
+        <div class="card-rows">
+          <div class="card-row"><span class="card-row-key">Regime</span><span class="card-row-val">RCVM 175 / 240</span></div>
+          <div class="card-row"><span class="card-row-key">Output</span><span class="card-row-val">Regulamento + Cessão</span></div>
+          <div class="card-row"><span class="card-row-key">Ciclo</span><span class="card-row-val">45–90 dias</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta"><span>B.002</span><span>REV.01</span></div>
+        <h3 class="card-title">Crédito Distressed</h3>
+        <p class="card-desc">
+          Diagnóstico de carteiras NPL, judicializadas e ativos depreciados. Estruturação de
+          aquisição, FIDC NP, due diligence pré-aquisição e teses de recuperação sob a
+          Lei 14.112/2020.
+        </p>
+        <div class="card-rows">
+          <div class="card-row"><span class="card-row-key">Regime</span><span class="card-row-val">Lei 14.112/2020</span></div>
+          <div class="card-row"><span class="card-row-key">Output</span><span class="card-row-val">DD + Estrutura</span></div>
+          <div class="card-row"><span class="card-row-key">Modelo</span><span class="card-row-val">Project + Success</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta"><span>B.003</span><span>REV.01</span></div>
+        <h3 class="card-title">DCM Advisory</h3>
+        <p class="card-desc">
+          Suporte legal a emissões de CRA, CRI, debêntures e operações lastreadas. Opinião
+          legal, revisão de prospecto, suitability regulatório e estruturação ao lado de
+          coordenadores e securitizadoras.
+        </p>
+        <div class="card-rows">
+          <div class="card-row"><span class="card-row-key">Regime</span><span class="card-row-val">RCVM 160 / 88</span></div>
+          <div class="card-row"><span class="card-row-key">Output</span><span class="card-row-val">Legal Opinion</span></div>
+          <div class="card-row"><span class="card-row-key">Foco</span><span class="card-row-val">Mid-market</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── C · OPERAÇÃO / MÉTODO ── -->
+  <section id="operacao" class="section">
+    <div class="sec-label">SEC. C &middot; MÉTODO</div>
+    <div class="section-header">
+      <h2 class="section-title">Como operamos.</h2>
+      <p class="section-desc">
+        Não vendemos horas avulsas. Cada mandato segue uma sequência metodológica
+        auditável — diagnóstico, estruturação, execução — com entregas formalizadas
+        em cada estágio.
+      </p>
+    </div>
+
+    <div class="phases-track">
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-label">PHASE</span>
+          <span class="phase-num">01</span>
+        </div>
+        <span class="phase-connector">&#9670;</span>
+        <h3 class="phase-title">Diagnóstico</h3>
+        <p class="phase-desc">
+          Leitura técnica do problema antes do desenho da solução. Mapeamento regulatório,
+          análise de risco, conflito e perímetro de viabilidade.
+        </p>
+        <ul class="phase-list">
+          <li>ANÁLISE CVM / BACEN</li>
+          <li>RISK MAPPING</li>
+          <li>CONFLITO E PERÍMETRO</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-label">PHASE</span>
+          <span class="phase-num">02</span>
+        </div>
+        <span class="phase-connector">&#9670;</span>
+        <h3 class="phase-title">Estruturação</h3>
+        <p class="phase-desc">
+          Desenho da operação em camadas — societária, regulatória, contratual e tributária
+          — com decisões justificadas e trade-offs explicitados ao cliente.
+        </p>
+        <ul class="phase-list">
+          <li>MODELAGEM DA OPERAÇÃO</li>
+          <li>DOCUMENTOS MASTER</li>
+          <li>TRADE-OFFS EXPLÍCITOS</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="phase-label">PHASE</span>
+          <span class="phase-num">03</span>
+        </div>
+        <h3 class="phase-title">Execução</h3>
+        <p class="phase-desc">
+          Implementação documental, interlocução com reguladores e contrapartes, e
+          acompanhamento até o fechamento e estabilização do veículo ou operação.
+        </p>
+        <ul class="phase-list">
+          <li>DOCUMENTAÇÃO FINAL</li>
+          <li>INTERLOCUÇÃO CVM</li>
+          <li>CLOSING E PÓS-CLOSING</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── D · PARA QUEM ── -->
+  <section id="para-quem" class="section" style="padding-bottom:0">
+    <div class="sec-label">SEC. D &middot; PARA QUEM</div>
+    <div class="section-header">
+      <h2 class="section-title">Para quem.</h2>
+      <p class="section-desc">
+        A carteira é restrita a perfis com operação real em mercado de capitais. A seleção
+        de mandatos não é restrição comercial, mas por desenho de competência.
+      </p>
+    </div>
+
+    <div class="profiles-grid">
+      <div class="profile">
+        <div class="profile-meta">
+          <span class="profile-num">T.01</span>
+          <span>PERFIL</span>
+        </div>
+        <h3 class="profile-title">Gestoras de FIDC mid e small market</h3>
+        <p class="profile-desc">
+          Gestoras independentes com PL entre R$ 50 mi e R$ 800 mi, equipe jurídica enxuta
+          e cadência regular de operações novas.
+        </p>
+        <div class="demanda-label">DEMANDA TÍPICA</div>
+        <p class="demanda-text">
+          Estruturação de novos veículos, parecer regulatório recorrente e suporte em
+          distribuição de cotas.
+        </p>
+      </div>
+
+      <div class="profile">
+        <div class="profile-meta">
+          <span class="profile-num">T.02</span>
+          <span>PERFIL</span>
+        </div>
+        <h3 class="profile-title">Fintechs de crédito Série A–C</h3>
+        <p class="profile-desc">
+          Originadoras, SCDs, SEPs e plataformas de crédito com captação institucional
+          confirmada e funding em desenho.
+        </p>
+        <div class="demanda-label">DEMANDA TÍPICA</div>
+        <p class="demanda-text">
+          Estruturação de funding via FIDC ou cessão, compliance BACEN/CVM e
+          contratos master.
+        </p>
+      </div>
+
+      <div class="profile">
+        <div class="profile-meta">
+          <span class="profile-num">T.03</span>
+          <span>PERFIL</span>
+        </div>
+        <h3 class="profile-title">Securitizadoras e bancos mid-market</h3>
+        <p class="profile-desc">
+          Securitizadoras independentes e mesas de DCM atuando como coordenadores em
+          emissões mid-market.
+        </p>
+        <div class="demanda-label">DEMANDA TÍPICA</div>
+        <p class="demanda-text">
+          Legal opinion, revisão de prospecto e suporte em estruturações lastreadas.
+        </p>
+      </div>
+
+      <div class="profile">
+        <div class="profile-meta">
+          <span class="profile-num">T.04</span>
+          <span>PERFIL</span>
+        </div>
+        <h3 class="profile-title">Fundos de distressed e special situations</h3>
+        <p class="profile-desc">
+          Gestoras especializadas em ativos depreciados, NPLs e operações em recuperação
+          judicial.
+        </p>
+        <div class="demanda-label">DEMANDA TÍPICA</div>
+        <p class="demanda-text">
+          Due diligence pré-aquisição, estruturação de carteira e teses de recuperação.
+        </p>
+      </div>
+    </div>
+
+    <div class="exclusoes-bar">
+      <strong>EXCLUSÕES</strong>
+      Pessoa física &middot; contencioso disperso &middot; societário generalista &middot;
+      tributário consultivo isolado &middot; M&amp;A fora de serviços financeiros
+    </div>
+  </section>
+
+  <!-- ── E · INSIGHTS ── -->
+  <section id="insights" class="section">
+    <div class="sec-label">SEC. E &middot; INSIGHTS TÉCNICOS</div>
+    <div class="section-header">
+      <h2 class="section-title">Análises<br>de mercado.</h2>
+      <p class="section-desc">
+        Conteúdo técnico produzido a partir de mandatos reais e leitura sistemática de
+        regulação. Sem opinião promocional, sem reescrita de norma — análise de fricção
+        entre regra, prática e contraparte.
+      </p>
+    </div>
+
+    <div class="insights-list">
+      <div class="insight-row">
+        <div class="insight-meta">
+          <span class="insight-num">INS.001</span>
+          <span class="insight-date">2026.04</span>
+        </div>
+        <span class="insight-cat">FIDC &middot; REGULATÓRIO</span>
+        <div class="insight-content">
+          <div class="insight-title">RCVM 240 e a redesenho das classes subordinadas: o que muda na prática</div>
+          <p class="insight-desc">Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre subordinação, classes e regime informacional aplicável aos FIDCs em distribuição pública.</p>
+        </div>
+        <span class="insight-time">12 MIN</span>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-meta">
+          <span class="insight-num">INS.002</span>
+          <span class="insight-date">2026.03</span>
+        </div>
+        <span class="insight-cat">DISTRESSED</span>
+        <div class="insight-content">
+          <div class="insight-title">Aquisição de carteiras NPL pós-Lei 14.112: estruturação por FIDC NP</div>
+          <p class="insight-desc">Discussão técnica sobre a viabilidade da aquisição de carteiras inadimplentes via FIDC NP e os mecanismos contratuais de blindagem reputacional do cedente.</p>
+        </div>
+        <span class="insight-time">9 MIN</span>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-meta">
+          <span class="insight-num">INS.003</span>
+          <span class="insight-date">2026.02</span>
+        </div>
+        <span class="insight-cat">DCM &middot; CRA</span>
+        <div class="insight-content">
+          <div class="insight-title">Lastro agrícola e o limite de elegibilidade: pontos de fricção em emissões 2026</div>
+          <p class="insight-desc">Mapeamento das principais divergências entre o entendimento da CVM e a prática de mercado sobre elegibilidade de lastro em CRAs, com foco em coordenadores mid-market.</p>
+        </div>
+        <span class="insight-time">7 MIN</span>
+      </div>
+
+      <div class="insight-row">
+        <div class="insight-meta">
+          <span class="insight-num">INS.004</span>
+          <span class="insight-date">2026.01</span>
+        </div>
+        <span class="insight-cat">ESTRUTURAÇÃO</span>
+        <div class="insight-content">
+          <div class="insight-title">Cessão master entre fintech e FIDC próprio: cláusulas críticas e gatilhos de recompra</div>
+          <p class="insight-desc">Revisão das cláusulas que mais geram impasse em contratos de cessão entre originadoras digitais e veículos próprios — gatilhos, covenants e mecanismos de saída.</p>
+        </div>
+        <span class="insight-time">10 MIN</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── F · CONTATO ── -->
+  <section id="contato">
+    <div class="contato-grid">
+      <div class="contato-left">
+        <div class="sec-label">SEC. F &middot; CONTATO</div>
+        <h2 class="contato-title">
+          Conversas técnicas,<br>
+          <em>sob agendamento.</em>
+        </h2>
+        <p class="contato-desc">
+          Não operamos por formulário aberto. Contato direto, mediado por relacionamento
+          ou referência técnica. Resposta em até 48 horas úteis.
+        </p>
+      </div>
+
+      <div class="contato-table">
+        <div class="contato-row">
+          <span class="contato-key">E-MAIL</span>
+          <span class="contato-val"><a href="mailto:rennan@rmira.com.br">rennan@rmira.com.br</a></span>
+        </div>
+        <div class="contato-row">
+          <span class="contato-key">TELEFONE</span>
+          <span class="contato-val"><a href="tel:+5511948418994">+55 (11) 94841-8994</a></span>
+        </div>
+        <div class="contato-row">
+          <span class="contato-key">SEDE</span>
+          <span class="contato-val">Av. Paulista 1.106, Sala 01 &middot; São Paulo / SP</span>
+        </div>
+        <div class="contato-row">
+          <span class="contato-key">COORDENADAS</span>
+          <span class="contato-val">N 23°33'42" &middot; W 46°39'22"</span>
+        </div>
+        <div class="contato-row">
+          <span class="contato-key">WEB</span>
+          <span class="contato-val"><a href="https://www.rmira.com.br">www.rmira.com.br</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contato-footer">
+      <div class="footer-left">
+        <div class="footer-block"></div>
+        <span class="footer-copy">© 2026 RMIRA ADVOCACIA &middot; SOCIEDADE INDIVIDUAL DE ADVOCACIA &middot; OAB/SP</span>
+      </div>
+      <div class="footer-blueprint">
+        <span>FILE &middot; 001/INDEX</span>
+        <span>REV 2026.04</span>
+        <span>SCALE 1:1</span>
+        <span>SHEET 05/05</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
