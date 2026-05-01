@@ -108,6 +108,9 @@
       flex-shrink: 0;
     }
 
+    /* ── Compensar nav sticky em todas as âncoras ── */
+    section { scroll-margin-top: 52px; }
+
     /* ── Hero ── */
     #posicionamento {
       min-height: calc(100vh - 52px);
@@ -119,12 +122,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 3.5rem 2.5rem 2.5rem;
+      padding: 1rem 2.5rem 0.75rem;
       border-bottom: 1px solid var(--border);
     }
     .hero-logo-bar img {
-      height: 140px;
-      width: auto;
+      width: min(500px, 44vw);
+      height: auto;
+      mix-blend-mode: multiply;
     }
     /* fallback text logo if image missing */
     .logo-fallback {
@@ -153,11 +157,12 @@
       border-bottom: 1px solid var(--border);
     }
     .hero-main {
-      padding: 4rem 3rem 4rem 2.5rem;
+      padding: 1.25rem 3rem 1.25rem 2.5rem;
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 0.75rem;
     }
     .hero-tag {
       font-family: var(--mono);
@@ -167,7 +172,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 0.5rem;
     }
     .hero-tag::before {
       content: '';
@@ -178,11 +183,11 @@
     }
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 5rem);
+      font-size: clamp(1.75rem, 3.2vw, 2.75rem);
       font-weight: 500;
-      line-height: 1.05;
+      line-height: 1.0;
       color: var(--navy);
-      margin-bottom: 3rem;
+      margin-bottom: 0;
     }
     .hero-title em {
       font-style: italic;
@@ -192,7 +197,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      padding-top: 2.5rem;
+      padding-top: 0.75rem;
       border-top: 1px solid var(--border);
     }
     .hero-desc {
@@ -221,7 +226,7 @@
 
     /* spec sheet sidebar */
     .hero-spec {
-      padding: 2rem 1.75rem;
+      padding: 1.25rem 1.75rem;
     }
     .spec-header {
       font-family: var(--mono);
@@ -236,7 +241,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 0.6rem 0;
+      padding: 0.4rem 0;
       border-bottom: 1px solid var(--border);
       gap: 1rem;
     }
@@ -258,7 +263,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-top: 1.5rem;
+      margin-top: 0.6rem;
       font-family: var(--mono);
       font-size: 0.6rem;
       letter-spacing: 0.14em;
@@ -422,14 +427,24 @@
     }
 
     /* ── Para Quem ── */
-    #para-quem { padding-bottom: 0; }
+    #para-quem {
+      min-height: calc(100vh - 52px);
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 0;
+      padding-top: 1.5rem;
+    }
+    #para-quem .sec-label { margin-bottom: 0.75rem; }
+    #para-quem .section-header { margin-bottom: 1rem; }
     .profiles-grid {
+      flex: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       border-top: 1px solid var(--border);
     }
     .profile {
-      padding: 2.5rem 2rem;
+      padding: 1.5rem 1.75rem;
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -441,35 +456,35 @@
       font-size: 0.55rem;
       letter-spacing: 0.14em;
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .profile-num { color: var(--blue); }
     .profile-title {
       font-family: var(--serif);
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 500;
       color: var(--blue);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.4rem;
       line-height: 1.2;
     }
     .profile-desc {
-      font-size: 0.8125rem;
-      line-height: 1.7;
+      font-size: 0.775rem;
+      line-height: 1.6;
       color: var(--navy);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
     }
     .demanda-label {
       font-family: var(--mono);
       font-size: 0.55rem;
       letter-spacing: 0.14em;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
     .demanda-text {
-      font-size: 0.8125rem;
+      font-size: 0.775rem;
       color: var(--blue);
-      line-height: 1.6;
-      padding-top: 0.5rem;
+      line-height: 1.5;
+      padding-top: 0.35rem;
       border-top: 1px dashed var(--border);
     }
     .exclusoes-bar {
@@ -549,8 +564,54 @@
       padding-top: 0.2rem;
     }
 
+    /* ── Insights ticker ── */
+    .insights-ticker-wrap {
+      overflow: hidden;
+      height: 420px;
+      position: relative;
+      border-top: 1px solid var(--border);
+    }
+    .insights-ticker-wrap::before,
+    .insights-ticker-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .insights-ticker-wrap::before {
+      top: 0;
+      background: linear-gradient(to bottom, var(--bg), transparent);
+    }
+    .insights-ticker-wrap::after {
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+    .insights-list {
+      display: flex;
+      flex-direction: column;
+      animation: ticker-up 10s linear infinite;
+    }
+    @keyframes ticker-up {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .insight-row {
+      display: grid;
+      grid-template-columns: 140px 160px 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
     /* ── Contato ── */
     #contato {
+      min-height: calc(100vh - 52px);
+      display: flex;
+      flex-direction: column;
       background: var(--navy);
       color: #c8d8e8;
       border-bottom: none;
@@ -558,41 +619,58 @@
     }
     #contato .sec-label { color: #6fa3c8; }
     #contato .sec-label::before { background: #6fa3c8; }
-    #contato .section-title { color: #e8f0f8; }
-    #contato .section-desc { color: #9ab5cc; }
-    .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      padding: 5rem 2.5rem 4rem;
+    .contato-top {
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .contato-left {}
     .contato-title {
       font-family: var(--serif);
       font-size: clamp(1.75rem, 3vw, 2.5rem);
       font-weight: 400;
       color: #e8f0f8;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
     }
     .contato-title em {
       font-style: italic;
-      color: #6fa3c8;
+      color: #1d98e4;
     }
     .contato-desc {
       font-size: 0.875rem;
       line-height: 1.7;
       color: #9ab5cc;
     }
+    .contato-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contato-logo-large {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .contato-logo-large img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      filter: grayscale(1) invert(1) brightness(2) contrast(5);
+      mix-blend-mode: screen;
+    }
     .contato-table {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      padding: 2rem 2.5rem;
     }
     .contato-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 1.1rem 0;
+      padding: 1rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       gap: 2rem;
     }
@@ -610,30 +688,15 @@
       color: #e0ecf4;
       text-align: right;
     }
-    .contato-val a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .contato-val a { color: inherit; text-decoration: none; }
     .contato-val a:hover { color: #ffffff; }
     .contato-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 2.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.25rem 2.5rem;
       flex-wrap: wrap;
       gap: 1rem;
-    }
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .footer-block {
-      width: 44px;
-      height: 44px;
-      background: #e8f0f8;
-      flex-shrink: 0;
     }
     .footer-copy {
       font-family: var(--mono);
@@ -773,11 +836,6 @@
     <div class="sec-label">SEC. B &middot; ESPECIALIZAÇÃO</div>
     <div class="section-header">
       <h2 class="section-title">Três frentes,<br>uma disciplina.</h2>
-      <p class="section-desc">
-        Toda atuação se ancora em mercado de capitais brasileiro. Mandatos fora do perímetro
-        técnico são recusados — não por escassez de oferta, mas por desenho operacional.
-        Profundidade vertical é a regra.
-      </p>
     </div>
 
     <div class="cards-grid">
@@ -833,11 +891,6 @@
     <div class="sec-label">SEC. C &middot; MÉTODO</div>
     <div class="section-header">
       <h2 class="section-title">Como operamos.</h2>
-      <p class="section-desc">
-        Não vendemos horas avulsas. Cada mandato segue uma sequência metodológica
-        auditável — diagnóstico, estruturação, execução — com entregas formalizadas
-        em cada estágio.
-      </p>
     </div>
 
     <div class="phases-track">
@@ -901,10 +954,6 @@
     <div class="sec-label">SEC. D &middot; PARA QUEM</div>
     <div class="section-header">
       <h2 class="section-title">Para quem.</h2>
-      <p class="section-desc">
-        A carteira é restrita a perfis com operação real em mercado de capitais. A seleção
-        de mandatos não é restrição comercial, mas por desenho de competência.
-      </p>
     </div>
 
     <div class="profiles-grid">
@@ -975,11 +1024,6 @@
       </div>
     </div>
 
-    <div class="exclusoes-bar">
-      <strong>EXCLUSÕES</strong>
-      Pessoa física &middot; contencioso disperso &middot; societário generalista &middot;
-      tributário consultivo isolado &middot; M&amp;A fora de serviços financeiros
-    </div>
   </section>
 
   <!-- ── E · INSIGHTS ── -->
@@ -987,14 +1031,10 @@
     <div class="sec-label">SEC. E &middot; INSIGHTS TÉCNICOS</div>
     <div class="section-header">
       <h2 class="section-title">Análises<br>de mercado.</h2>
-      <p class="section-desc">
-        Conteúdo técnico produzido a partir de mandatos reais e leitura sistemática de
-        regulação. Sem opinião promocional, sem reescrita de norma — análise de fricção
-        entre regra, prática e contraparte.
-      </p>
     </div>
 
-    <div class="insights-list">
+    <div class="insights-ticker-wrap">
+    <div class="insights-list" id="insightsTicker">
       <div class="insight-row">
         <div class="insight-meta">
           <span class="insight-num">INS.001</span>
@@ -1047,23 +1087,27 @@
         <span class="insight-time">10 MIN</span>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- ── F · CONTATO ── -->
   <section id="contato">
-    <div class="contato-grid">
-      <div class="contato-left">
-        <div class="sec-label">SEC. F &middot; CONTATO</div>
-        <h2 class="contato-title">
-          Conversas técnicas,<br>
-          <em>sob agendamento.</em>
-        </h2>
-        <p class="contato-desc">
-          Não operamos por formulário aberto. Contato direto, mediado por relacionamento
-          ou referência técnica. Resposta em até 48 horas úteis.
-        </p>
-      </div>
+    <div class="contato-top">
+      <div class="sec-label">SEC. F &middot; CONTATO</div>
+      <h2 class="contato-title">
+        Conversas técnicas,<br>
+        <em>sob agendamento.</em>
+      </h2>
+      <p class="contato-desc">
+        Não operamos por formulário aberto. Contato direto, mediado por relacionamento
+        ou referência técnica. Resposta em até 48 horas úteis.
+      </p>
+    </div>
 
+    <div class="contato-body">
+      <div class="contato-logo-large">
+        <img src="logo.png" alt="RMIRA ADV">
+      </div>
       <div class="contato-table">
         <div class="contato-row">
           <span class="contato-key">E-MAIL</span>
@@ -1089,10 +1133,7 @@
     </div>
 
     <div class="contato-footer">
-      <div class="footer-left">
-        <div class="footer-block"></div>
-        <span class="footer-copy">© 2026 RMIRA ADVOCACIA &middot; SOCIEDADE INDIVIDUAL DE ADVOCACIA &middot; OAB/SP</span>
-      </div>
+      <span class="footer-copy">© 2026 RMIRA ADVOCACIA</span>
       <div class="footer-blueprint">
         <span>FILE &middot; 001/INDEX</span>
         <span>REV 2026.04</span>
@@ -1102,5 +1143,13 @@
     </div>
   </section>
 
+  <script>
+    // Duplica os itens do ticker para loop contínuo
+    const ticker = document.getElementById('insightsTicker');
+    if (ticker) {
+      const clone = ticker.innerHTML;
+      ticker.innerHTML = clone + clone;
+    }
+  </script>
 </body>
 </html>
