@@ -41,6 +41,7 @@
       background-image:
         repeating-linear-gradient(0deg,   var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 44px),
         repeating-linear-gradient(90deg,  var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 44px);
+      background-position: 0 8px;
     }
 
     /* ── Nav ── */
@@ -122,12 +123,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem 2.5rem 0.75rem;
+      padding: 0 2.5rem;
+      height: 280px;
       border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
     .hero-logo-bar img {
-      width: min(500px, 44vw);
-      height: auto;
+      max-height: 240px;
+      width: auto;
+      max-width: min(520px, 46vw);
       mix-blend-mode: multiply;
     }
     /* fallback text logo if image missing */
@@ -161,8 +165,7 @@
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 0.75rem;
+      justify-content: space-between;
     }
     .hero-tag {
       font-family: var(--mono);
@@ -264,6 +267,8 @@
       align-items: center;
       gap: 0.6rem;
       margin-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
       font-family: var(--mono);
       font-size: 0.6rem;
       letter-spacing: 0.14em;
@@ -278,14 +283,15 @@
 
     /* ── Generic section wrapper ── */
     .section {
-      padding: 5rem 2.5rem;
+      padding: 2.75rem 2.5rem;
       border-bottom: 1px solid var(--border);
+      min-height: calc(100vh - 52px);
     }
     .section-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin-bottom: 4rem;
+      margin-bottom: 0.75rem;
     }
     .section-title {
       font-family: var(--serif);
@@ -306,6 +312,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
     .card {
       padding: 2.5rem 2rem;
@@ -353,12 +360,12 @@
     .card-row-val { color: var(--blue); text-align: right; }
 
     /* ── Operação / fases ── */
-    #operacao { background: var(--bg); }
     .phases-track {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--border);
-      margin-top: 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-top: 0.5rem;
     }
     .phase {
       padding: 2.5rem 2rem;
@@ -505,7 +512,7 @@
     }
 
     /* ── Insights ── */
-    #insights .section-header { margin-bottom: 2rem; }
+    #insights .section-header { margin-bottom: 0.75rem; }
     .insights-list {
       border-top: 1px solid var(--border);
     }
@@ -744,8 +751,8 @@
     @media (max-width: 600px) {
       nav { padding: 0 1rem; gap: 1rem; }
       .nav-links { display: none; }
-      .hero-logo-bar { padding: 2rem 1rem 1.5rem; }
-      .hero-logo-bar img { height: 90px; }
+      .hero-logo-bar { height: 140px; padding: 0 1rem; }
+      .hero-logo-bar img { max-height: 110px; }
       .hero-main { padding: 2.5rem 1rem; }
       .section { padding: 3rem 1rem; }
       .contato-grid { padding: 2.5rem 1rem; }
@@ -780,12 +787,12 @@
 
     <div class="hero-body">
       <div class="hero-main">
-        <div>
+        <div class="hero-top-group">
           <div class="hero-tag">A.001 &middot; POSICIONAMENTO</div>
           <h1 class="hero-title">
-            Engenharia jurídica<br>
+            <em>Engenharia jurídica</em><br>
             para mercado<br>
-            <em>de capitais.</em>
+            de capitais.
           </h1>
         </div>
         <div class="hero-bottom">
@@ -1111,11 +1118,7 @@
       <div class="contato-table">
         <div class="contato-row">
           <span class="contato-key">E-MAIL</span>
-          <span class="contato-val"><a href="mailto:rennan@rmira.com.br">rennan@rmira.com.br</a></span>
-        </div>
-        <div class="contato-row">
-          <span class="contato-key">TELEFONE</span>
-          <span class="contato-val"><a href="tel:+5511948418994">+55 (11) 94841-8994</a></span>
+          <span class="contato-val"><a href="mailto:contato@rmira.com.br">contato@rmira.com.br</a></span>
         </div>
         <div class="contato-row">
           <span class="contato-key">SEDE</span>
