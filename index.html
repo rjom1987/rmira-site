@@ -93,7 +93,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-family: var(--mono);
+      font-family: var(--sans);
       font-size: 0.625rem;
       letter-spacing: 0.16em;
       color: var(--blue);
@@ -574,7 +574,7 @@
     /* ── Insights ticker ── */
     .insights-ticker-wrap {
       overflow: hidden;
-      height: 420px;
+      height: 260px;
       position: relative;
       border-top: 1px solid var(--border);
     }
@@ -598,7 +598,7 @@
     .insights-list {
       display: flex;
       flex-direction: column;
-      animation: ticker-up 10s linear infinite;
+      animation: ticker-up 22s linear infinite;
     }
     @keyframes ticker-up {
       0%   { transform: translateY(0); }
@@ -726,7 +726,7 @@
       .nav-links { gap: 1.5rem; }
 
       .hero-body { grid-template-columns: 1fr; }
-      .hero-spec { border-top: 1px solid var(--border); }
+      .hero-spec { border-top: 1px solid var(--border); border-right: none; }
       .hero-bottom { grid-template-columns: 1fr; }
       .hero-promise { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
 
@@ -743,20 +743,62 @@
       .insight-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .insight-row > * { padding: 0; }
 
-      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+      .contato-body { grid-template-columns: 1fr; }
+      .contato-logo-large { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; }
+      .contato-table { padding: 1.5rem 2.5rem; }
       .footer-blueprint { display: none; }
       .section { padding: 3.5rem 1.5rem; }
     }
 
     @media (max-width: 600px) {
-      nav { padding: 0 1rem; gap: 1rem; }
+      nav { padding: 0 1rem; gap: 1rem; height: 48px; }
+      .nav-brand { font-size: 0.65rem; }
       .nav-links { display: none; }
+      .nav-rev { font-size: 0.55rem; }
+      
       .hero-logo-bar { height: 140px; padding: 0 1rem; }
       .hero-logo-bar img { max-height: 110px; }
-      .hero-main { padding: 2.5rem 1rem; }
-      .section { padding: 3rem 1rem; }
-      .contato-grid { padding: 2.5rem 1rem; }
-      .contato-footer { padding: 1.25rem 1rem; flex-direction: column; align-items: flex-start; }
+      .hero-main { padding: 1.5rem 1rem; }
+      .hero-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+      .hero-bottom { gap: 1rem; }
+      .hero-promise { padding-left: 0; padding-top: 1rem; }
+      .hero-promise p { font-size: 1rem; }
+      
+      .section { padding: 2rem 1rem; min-height: auto; }
+      .sec-label { font-size: 0.55rem; margin-bottom: 1.5rem; }
+      .sec-label::before { width: 1.5rem; }
+      .section-title { font-size: clamp(1.5rem, 3vw, 2rem); }
+      
+      .card { padding: 1.5rem 1rem; }
+      .card-title { font-size: 1.25rem; }
+      .card-desc { font-size: 0.75rem; }
+      
+      .phase { padding: 1.5rem 1rem; }
+      .phase-num { font-size: 2.5rem; }
+      .phase-title { font-size: 1.25rem; }
+      .phase-desc { font-size: 0.75rem; }
+      
+      .profile { padding: 1rem 1rem; border-bottom: 1px solid var(--border); }
+      .profile-title { font-size: 1rem; }
+      .profile-desc { font-size: 0.7rem; }
+      
+      .insights-ticker-wrap { height: 260px; }
+      .insight-row { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem 0; }
+      .insight-title { font-size: 1rem; }
+      .insight-desc { font-size: 0.75rem; }
+      
+      #contato { padding-bottom: 0; }
+      .contato-top { padding: 1.5rem 1rem 1rem; }
+      .contato-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+      .contato-desc { font-size: 0.8rem; }
+      .contato-body { grid-template-columns: 1fr; }
+      .contato-logo-large { display: none; padding: 0; border-right: none; }
+      .contato-table { padding: 1rem; }
+      .contato-row { padding: 0.75rem 0; gap: 1rem; }
+      .contato-key { font-size: 0.5rem; }
+      .contato-val { font-size: 0.65rem; }
+      .contato-footer { padding: 1rem; flex-direction: column; align-items: flex-start; }
+      .footer-copy { font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -767,12 +809,13 @@
     <a href="#posicionamento" class="nav-brand">RMIRA &middot; ADV</a>
     <ul class="nav-links">
       <li><a href="#especializacao">Especialização</a></li>
-      <li><a href="#operacao">Operação</a></li>
+      <li><a href="#operacao">A Operação</a></li>
       <li><a href="#para-quem">Para quem</a></li>
       <li><a href="#insights">Insights</a></li>
       <li><a href="#contato">Contato</a></li>
+      <li><a href="https://www.linkedin.com/in/rennanmira/" target="_blank">Rennan Mira</a></li>
     </ul>
-    <span class="nav-rev">REV 2026.04</span>
+    <span class="nav-rev">REV 2026.05</span>
   </nav>
 
   <!-- ── A.001 · POSICIONAMENTO ── -->
@@ -802,8 +845,8 @@
             da operação e execução documental — sem genéricos, sem volume, sem ruído.
           </p>
           <div class="hero-promise">
-            <div class="hero-promise-label">PROMESSA OPERACIONAL</div>
-            <p>Inteligência jurídica, projetada com a precisão de um blueprint.</p>
+            <div class="hero-promise-label">CAPACIDADE</div>
+            <p>A capacidade é limitada por design. Inteligência jurídica, projetada com a precisão de um blueprint.</p>
           </div>
         </div>
       </div>
@@ -895,9 +938,9 @@
 
   <!-- ── C · OPERAÇÃO / MÉTODO ── -->
   <section id="operacao" class="section">
-    <div class="sec-label">SEC. C &middot; MÉTODO</div>
+    <div class="sec-label">SEC. C &middot; A OPERAÇÃO</div>
     <div class="section-header">
-      <h2 class="section-title">Como operamos.</h2>
+      <h2 class="section-title">O diagnóstico,<br>a estruturação<br>e a execução.<br>Feitos pela mesma pessoa.</h2>
     </div>
 
     <div class="phases-track">
@@ -906,7 +949,7 @@
           <span class="phase-label">PHASE</span>
           <span class="phase-num">01</span>
         </div>
-        <span class="phase-connector">&#9670;</span>
+        <span class="phase-connector">◆</span>
         <h3 class="phase-title">Diagnóstico</h3>
         <p class="phase-desc">
           Leitura técnica do problema antes do desenho da solução. Mapeamento regulatório,
@@ -924,7 +967,7 @@
           <span class="phase-label">PHASE</span>
           <span class="phase-num">02</span>
         </div>
-        <span class="phase-connector">&#9670;</span>
+        <span class="phase-connector">◆</span>
         <h3 class="phase-title">Estruturação</h3>
         <p class="phase-desc">
           Desenho da operação em camadas — societária, regulatória, contratual e tributária
@@ -944,8 +987,8 @@
         </div>
         <h3 class="phase-title">Execução</h3>
         <p class="phase-desc">
-          Implementação documental, interlocução com reguladores e contrapartes, e
-          acompanhamento até o fechamento e estabilização do veículo ou operação.
+          Implementação documental, interlocução com reguladores e contrapartes, e acompanhamento
+          até o fechamento e estabilização do veículo ou operação.
         </p>
         <ul class="phase-list">
           <li>DOCUMENTAÇÃO FINAL</li>
@@ -957,7 +1000,7 @@
   </section>
 
   <!-- ── D · PARA QUEM ── -->
-  <section id="para-quem" class="section" style="padding-bottom:0">
+  <section id="para-quem">
     <div class="sec-label">SEC. D &middot; PARA QUEM</div>
     <div class="section-header">
       <h2 class="section-title">Para quem.</h2>
@@ -965,135 +1008,178 @@
 
     <div class="profiles-grid">
       <div class="profile">
-        <div class="profile-meta">
-          <span class="profile-num">T.01</span>
-          <span>PERFIL</span>
-        </div>
+        <div class="profile-meta"><span>T.01</span><span>PERFIL</span></div>
         <h3 class="profile-title">Gestoras de FIDC mid e small market</h3>
         <p class="profile-desc">
           Gestoras independentes com PL entre R$ 50 mi e R$ 800 mi, equipe jurídica enxuta
           e cadência regular de operações novas.
         </p>
         <div class="demanda-label">DEMANDA TÍPICA</div>
-        <p class="demanda-text">
-          Estruturação de novos veículos, parecer regulatório recorrente e suporte em
-          distribuição de cotas.
-        </p>
+        <div class="demanda-text">
+          Estruturação de novos veículos, parecer regulatório recorrente e suporte em distribuição de cotas.
+        </div>
       </div>
 
       <div class="profile">
-        <div class="profile-meta">
-          <span class="profile-num">T.02</span>
-          <span>PERFIL</span>
-        </div>
+        <div class="profile-meta"><span>T.02</span><span>PERFIL</span></div>
         <h3 class="profile-title">Fintechs de crédito Série A–C</h3>
         <p class="profile-desc">
-          Originadoras, SCDs, SEPs e plataformas de crédito com captação institucional
-          confirmada e funding em desenho.
+          Originadoras, SCDs, SEPs e plataformas de crédito com captação institucional confirmada
+          e funding em desenho.
         </p>
         <div class="demanda-label">DEMANDA TÍPICA</div>
-        <p class="demanda-text">
-          Estruturação de funding via FIDC ou cessão, compliance BACEN/CVM e
-          contratos master.
-        </p>
+        <div class="demanda-text">
+          Estruturação de funding via FIDC ou cessão, compliance BACEN/CVM e contratos master.
+        </div>
       </div>
 
       <div class="profile">
-        <div class="profile-meta">
-          <span class="profile-num">T.03</span>
-          <span>PERFIL</span>
-        </div>
+        <div class="profile-meta"><span>T.03</span><span>PERFIL</span></div>
         <h3 class="profile-title">Securitizadoras e bancos mid-market</h3>
         <p class="profile-desc">
-          Securitizadoras independentes e mesas de DCM atuando como coordenadores em
-          emissões mid-market.
+          Securitizadoras independentes e mesas de DCM atuando como coordenadores em emissões
+          mid-market.
         </p>
         <div class="demanda-label">DEMANDA TÍPICA</div>
-        <p class="demanda-text">
+        <div class="demanda-text">
           Legal opinion, revisão de prospecto e suporte em estruturações lastreadas.
-        </p>
+        </div>
       </div>
 
       <div class="profile">
-        <div class="profile-meta">
-          <span class="profile-num">T.04</span>
-          <span>PERFIL</span>
-        </div>
+        <div class="profile-meta"><span>T.04</span><span>PERFIL</span></div>
         <h3 class="profile-title">Fundos de distressed e special situations</h3>
         <p class="profile-desc">
           Gestoras especializadas em ativos depreciados, NPLs e operações em recuperação
           judicial.
         </p>
         <div class="demanda-label">DEMANDA TÍPICA</div>
-        <p class="demanda-text">
+        <div class="demanda-text">
           Due diligence pré-aquisição, estruturação de carteira e teses de recuperação.
-        </p>
+        </div>
       </div>
     </div>
 
+    <div class="exclusoes-bar">
+      <strong>FORA DO ESCOPO:</strong>
+      Consultoria estratégica genérica, compliance corporativo, M&A, contencioso, parecer em massa, retainer com volume ilimitado.
+    </div>
   </section>
 
   <!-- ── E · INSIGHTS ── -->
   <section id="insights" class="section">
-    <div class="sec-label">SEC. E &middot; INSIGHTS TÉCNICOS</div>
+    <div class="sec-label">SEC. E &middot; INSIGHTS</div>
     <div class="section-header">
       <h2 class="section-title">Análises<br>de mercado.</h2>
     </div>
 
     <div class="insights-ticker-wrap">
-    <div class="insights-list" id="insightsTicker">
-      <div class="insight-row">
-        <div class="insight-meta">
-          <span class="insight-num">INS.001</span>
-          <span class="insight-date">2026.04</span>
+      <div class="insights-list">
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.001</div>
+            <div class="insight-date">2026.04</div>
+            <div class="insight-cat">FIDC · REGULATÓRIO</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">RCVM 240 e a redesenho das classes subordinadas: o que muda na prática</h3>
+            <p class="insight-desc">Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre subordinação, classes e regime informacional aplicável aos FIDCs em distribuição pública.</p>
+          </div>
+          <div class="insight-time">12 MIN</div>
         </div>
-        <span class="insight-cat">FIDC &middot; REGULATÓRIO</span>
-        <div class="insight-content">
-          <div class="insight-title">RCVM 240 e a redesenho das classes subordinadas: o que muda na prática</div>
-          <p class="insight-desc">Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre subordinação, classes e regime informacional aplicável aos FIDCs em distribuição pública.</p>
-        </div>
-        <span class="insight-time">12 MIN</span>
-      </div>
 
-      <div class="insight-row">
-        <div class="insight-meta">
-          <span class="insight-num">INS.002</span>
-          <span class="insight-date">2026.03</span>
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.002</div>
+            <div class="insight-date">2026.03</div>
+            <div class="insight-cat">DISTRESSED</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Aquisição de carteiras NPL pós-Lei 14.112: estruturação por FIDC NP</h3>
+            <p class="insight-desc">Discussão técnica sobre a viabilidade da aquisição de carteiras inadimplentes via FIDC NP e os mecanismos contratuais de blindagem reputacional do cedente.</p>
+          </div>
+          <div class="insight-time">9 MIN</div>
         </div>
-        <span class="insight-cat">DISTRESSED</span>
-        <div class="insight-content">
-          <div class="insight-title">Aquisição de carteiras NPL pós-Lei 14.112: estruturação por FIDC NP</div>
-          <p class="insight-desc">Discussão técnica sobre a viabilidade da aquisição de carteiras inadimplentes via FIDC NP e os mecanismos contratuais de blindagem reputacional do cedente.</p>
-        </div>
-        <span class="insight-time">9 MIN</span>
-      </div>
 
-      <div class="insight-row">
-        <div class="insight-meta">
-          <span class="insight-num">INS.003</span>
-          <span class="insight-date">2026.02</span>
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.003</div>
+            <div class="insight-date">2026.02</div>
+            <div class="insight-cat">DCM · CRA</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Lastro agrícola e o limite de elegibilidade: pontos de fricção em emissões 2026</h3>
+            <p class="insight-desc">Mapeamento das principais divergências entre o entendimento da CVM e a prática de mercado sobre elegibilidade de lastro em CRAs, com foco em coordenadores mid-market.</p>
+          </div>
+          <div class="insight-time">7 MIN</div>
         </div>
-        <span class="insight-cat">DCM &middot; CRA</span>
-        <div class="insight-content">
-          <div class="insight-title">Lastro agrícola e o limite de elegibilidade: pontos de fricção em emissões 2026</div>
-          <p class="insight-desc">Mapeamento das principais divergências entre o entendimento da CVM e a prática de mercado sobre elegibilidade de lastro em CRAs, com foco em coordenadores mid-market.</p>
-        </div>
-        <span class="insight-time">7 MIN</span>
-      </div>
 
-      <div class="insight-row">
-        <div class="insight-meta">
-          <span class="insight-num">INS.004</span>
-          <span class="insight-date">2026.01</span>
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.004</div>
+            <div class="insight-date">2026.01</div>
+            <div class="insight-cat">ESTRUTURAÇÃO</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Cessão master entre fintech e FIDC próprio: cláusulas críticas e gatilhos de recompra</h3>
+            <p class="insight-desc">Revisão das cláusulas que mais geram impasse em contratos de cessão entre originadoras digitais e veículos próprios — gatilhos, covenants e mecanismos de recompra.</p>
+          </div>
+          <div class="insight-time">11 MIN</div>
         </div>
-        <span class="insight-cat">ESTRUTURAÇÃO</span>
-        <div class="insight-content">
-          <div class="insight-title">Cessão master entre fintech e FIDC próprio: cláusulas críticas e gatilhos de recompra</div>
-          <p class="insight-desc">Revisão das cláusulas que mais geram impasse em contratos de cessão entre originadoras digitais e veículos próprios — gatilhos, covenants e mecanismos de saída.</p>
+
+        <!-- Duplicar para animação contínua -->
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.001</div>
+            <div class="insight-date">2026.04</div>
+            <div class="insight-cat">FIDC · REGULATÓRIO</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">RCVM 240 e a redesenho das classes subordinadas: o que muda na prática</h3>
+            <p class="insight-desc">Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre subordinação, classes e regime informacional aplicável aos FIDCs em distribuição pública.</p>
+          </div>
+          <div class="insight-time">12 MIN</div>
         </div>
-        <span class="insight-time">10 MIN</span>
+
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.002</div>
+            <div class="insight-date">2026.03</div>
+            <div class="insight-cat">DISTRESSED</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Aquisição de carteiras NPL pós-Lei 14.112: estruturação por FIDC NP</h3>
+            <p class="insight-desc">Discussão técnica sobre a viabilidade da aquisição de carteiras inadimplentes via FIDC NP e os mecanismos contratuais de blindagem reputacional do cedente.</p>
+          </div>
+          <div class="insight-time">9 MIN</div>
+        </div>
+
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.003</div>
+            <div class="insight-date">2026.02</div>
+            <div class="insight-cat">DCM · CRA</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Lastro agrícola e o limite de elegibilidade: pontos de fricção em emissões 2026</h3>
+            <p class="insight-desc">Mapeamento das principais divergências entre o entendimento da CVM e a prática de mercado sobre elegibilidade de lastro em CRAs, com foco em coordenadores mid-market.</p>
+          </div>
+          <div class="insight-time">7 MIN</div>
+        </div>
+
+        <div class="insight-row">
+          <div class="insight-meta">
+            <div class="insight-num">INS.004</div>
+            <div class="insight-date">2026.01</div>
+            <div class="insight-cat">ESTRUTURAÇÃO</div>
+          </div>
+          <div class="insight-content">
+            <h3 class="insight-title">Cessão master entre fintech e FIDC próprio: cláusulas críticas e gatilhos de recompra</h3>
+            <p class="insight-desc">Revisão das cláusulas que mais geram impasse em contratos de cessão entre originadoras digitais e veículos próprios — gatilhos, covenants e mecanismos de recompra.</p>
+          </div>
+          <div class="insight-time">11 MIN</div>
+        </div>
       </div>
-    </div>
     </div>
   </section>
 
@@ -1101,58 +1187,37 @@
   <section id="contato">
     <div class="contato-top">
       <div class="sec-label">SEC. F &middot; CONTATO</div>
-      <h2 class="contato-title">
-        Conversas técnicas,<br>
-        <em>sob agendamento.</em>
-      </h2>
-      <p class="contato-desc">
-        Não operamos por formulário aberto. Contato direto, mediado por relacionamento
-        ou referência técnica. Resposta em até 48 horas úteis.
-      </p>
+      <h2 class="contato-title">Vamos conversar?</h2>
+      <p class="contato-desc">Contato direto, sem formulário. Envie um email ou conecte no LinkedIn.</p>
     </div>
 
     <div class="contato-body">
       <div class="contato-logo-large">
-        <img src="logo.png" alt="RMIRA ADV">
+        <img src="logo.png" alt="RMIRA">
       </div>
       <div class="contato-table">
         <div class="contato-row">
-          <span class="contato-key">E-MAIL</span>
+          <span class="contato-key">EMAIL</span>
           <span class="contato-val"><a href="mailto:contato@rmira.com.br">contato@rmira.com.br</a></span>
         </div>
         <div class="contato-row">
-          <span class="contato-key">SEDE</span>
-          <span class="contato-val">Av. Paulista 1.106, Sala 01 &middot; São Paulo / SP</span>
+          <span class="contato-key">LINKEDIN</span>
+          <span class="contato-val"><a href="https://www.linkedin.com/in/rennanmira/" target="_blank">Rennan Mira</a></span>
         </div>
         <div class="contato-row">
-          <span class="contato-key">COORDENADAS</span>
-          <span class="contato-val">N 23°33'42" &middot; W 46°39'22"</span>
-        </div>
-        <div class="contato-row">
-          <span class="contato-key">WEB</span>
+          <span class="contato-key">WEBSITE</span>
           <span class="contato-val"><a href="https://www.rmira.com.br">www.rmira.com.br</a></span>
         </div>
       </div>
     </div>
 
     <div class="contato-footer">
-      <span class="footer-copy">© 2026 RMIRA ADVOCACIA</span>
+      <span class="footer-copy">© 2026 RMIRA ADV. Todos os direitos reservados.</span>
       <div class="footer-blueprint">
-        <span>FILE &middot; 001/INDEX</span>
-        <span>REV 2026.04</span>
-        <span>SCALE 1:1</span>
-        <span>SHEET 05/05</span>
+        <span>Engenharia jurídica para mercado de capitais</span>
       </div>
     </div>
   </section>
 
-  <script>
-    // Duplica os itens do ticker para loop contínuo
-    const ticker = document.getElementById('insightsTicker');
-    if (ticker) {
-      const clone = ticker.innerHTML;
-      ticker.innerHTML = clone + clone;
-    }
-  </script>
 </body>
 </html>
