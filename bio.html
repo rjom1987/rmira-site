@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rennan Mira — RMIRA ADV</title>
+  <meta name="description" content="Rennan Mira — Advogado. Especialista em mercado de capitais, estruturação de FIDC e crédito distressed.">
+
+  <!-- LinkedIn redirect -->
+  
+  <meta http-equiv="refresh" content="2;url=https://br.linkedin.com/in/rennanmira">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0B1F3A;
+      --blue: #2B7FD4;
+      --bg:   #F5F4F0;
+      --mono: 'Space Mono', monospace;
+      --serif:'Cormorant Garant', Georgia, serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--navy);
+      color: white;
+      font-family: var(--mono);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 24px;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .card {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo-mark {
+      margin: 0 auto 40px;
+    }
+
+    .logo-mark img {
+      max-width: 160px;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .logo-fallback {
+      font-family: var(--mono);
+      font-size: 16px;
+      letter-spacing: .2em;
+      color: white;
+    }
+
+    .logo-fallback small {
+      display: block;
+      font-size: 9px;
+      letter-spacing: .16em;
+      opacity: .35;
+      margin-top: 6px;
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-size: clamp(32px, 6vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .role {
+      font-size: 10px;
+      letter-spacing: .14em;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 32px;
+    }
+
+    .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,.15);
+      margin: 0 auto 40px;
+    }
+
+    .redirect-msg {
+      font-size: 9px;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.25);
+      margin-bottom: 20px;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      width: 100%;
+      max-width: 240px;
+      height: 1px;
+      background: rgba(255,255,255,.1);
+      margin: 0 auto 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0%;
+      background: var(--blue);
+      animation: fill 2s linear forwards;
+    }
+
+    @keyframes fill {
+      to { width: 100%; }
+    }
+
+    .linkedin-btn {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      color: var(--blue);
+      border: 1px solid rgba(43,127,212,.4);
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+
+    .linkedin-btn:hover {
+      border-color: var(--blue);
+      background: rgba(43,127,212,.08);
+    }
+
+    .footer-tag {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.15);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="logo-mark">
+      <img src="assets/logo-white.svg" alt="RMIRA ADV"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div class="logo-fallback" style="display:none">
+        RMIRA ADV
+        <small>ADVISORY · ADVOCACY · ADVANCE</small>
+      </div>
+    </div>
+
+    <h1 class="name">Rennan Mira</h1>
+    <div class="role">OAB/RJ 168.948 · ADVOGADO · MERCADO DE CAPITAIS</div>
+
+    <p class="tagline">
+      Especialista em estruturação de FIDC,<br>
+      crédito distressed e DCM advisory.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="redirect-msg">REDIRECIONANDO PARA LINKEDIN</div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+
+
+    <a href="https://br.linkedin.com/in/rennanmira" class="linkedin-btn">
+      ACESSAR LINKEDIN →
+    </a>
+
+  </div>
+
+  <div class="footer-tag">RMIRA ADV · BIO · REV 2026.04</div>
+
+  <script>
+    // Fallback redirect via JS (além do meta refresh)
+    setTimeout(() => {
+  
+      window.location.href = 'https://br.linkedin.com/in/rennanmira';
+    }, 2000);
+  </script>
+
+</body>
+</html>

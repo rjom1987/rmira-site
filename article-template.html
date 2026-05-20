@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+    ════════════════════════════════════════════
+    TEMPLATE · INSIGHT INDIVIDUAL
+    Para usar: copie este arquivo, renomeie para
+    ins-001.html, ins-002.html, etc. e preencha
+    os campos marcados com ⚠️
+    ════════════════════════════════════════════
+  -->
+
+  <!-- ⚠️ ATUALIZAR: título -->
+  <title>INS.001 · RCVM 240 e o redesenho das classes subordinadas — RMIRA ADV</title>
+  <!-- ⚠️ ATUALIZAR: descrição -->
+  <meta name="description" content="Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre subordinação e classes em FIDCs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Space+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0B1F3A;
+      --blue:   #2B7FD4;
+      --bg:     #F5F4F0;
+      --border: rgba(11,31,58,.10);
+      --grid-c: rgba(11,31,58,.07);
+      --serif:  'Cormorant Garant', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+      --mono:   'Space Mono', 'Courier New', monospace;
+      --nav-h:  56px;
+      --max-w:  720px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Grid background */
+    .grid-bg {
+      background-image:
+        linear-gradient(var(--grid-c) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-c) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--navy);
+      opacity: .5;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    .nav-back:hover { opacity: 1; text-decoration: none; }
+
+    .nav-rev {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--navy);
+      opacity: .3;
+    }
+
+    /* ── HEADER / CAPA ── */
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding: 64px 40px 56px;
+    }
+
+    .article-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .article-meta-top {
+      display: flex;
+      gap: 20px;
+      align-items: baseline;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-num {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .14em;
+      color: var(--navy);
+      opacity: .35;
+    }
+
+    .meta-date {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .14em;
+      color: var(--blue);
+    }
+
+    .meta-cat {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      color: var(--navy);
+      opacity: .4;
+    }
+
+    .meta-time {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      color: var(--navy);
+      opacity: .3;
+      margin-left: auto;
+    }
+
+    .article-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .article-subtitle {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--navy);
+      opacity: .65;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .author-name {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--navy);
+    }
+
+    .author-oab {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      color: var(--navy);
+      opacity: .35;
+    }
+
+    /* Spec panel (right column of header) */
+    .article-spec {
+      border: 1px solid var(--border);
+      padding: 24px;
+      background: rgba(255,255,255,.3);
+    }
+
+    .spec-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .14em;
+      color: var(--navy);
+      opacity: .35;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
+    }
+
+    .spec-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 9px;
+      gap: 12px;
+    }
+
+    .spec-line:last-child { border-bottom: none; }
+    .spec-lk { opacity: .4; flex-shrink: 0; letter-spacing: .1em; }
+    .spec-lv { text-align: right; letter-spacing: .06em; }
+
+    /* ── BODY ── */
+    .article-body {
+      padding: 64px 40px;
+      max-width: calc(var(--max-w) + 80px);
+      margin: 0 auto;
+    }
+
+    /* Prose elements */
+    .prose > * + * { margin-top: 1.5em; }
+
+    .prose h2 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--border);
+    }
+
+    .prose h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-top: 2.5em;
+    }
+
+    .prose p {
+      font-size: 16px;
+      color: var(--navy);
+      opacity: .8;
+      line-height: 1.8;
+    }
+
+    .prose strong {
+      color: var(--navy);
+      opacity: 1;
+      font-weight: 500;
+    }
+
+    .prose em {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    /* Call-out box */
+    .callout {
+      border-left: 2px solid var(--blue);
+      padding: 20px 24px;
+      background: rgba(43,127,212,.05);
+      margin: 2em 0;
+    }
+
+    .callout p {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-style: italic;
+      opacity: .85;
+    }
+
+    /* Numbered list with custom styling */
+    .prose ol {
+      counter-reset: rmira-counter;
+      list-style: none;
+      padding: 0;
+    }
+
+    .prose ol li {
+      counter-increment: rmira-counter;
+      display: flex;
+      gap: 16px;
+      margin-top: 1em;
+      font-size: 15px;
+      color: var(--navy);
+      opacity: .8;
+      line-height: 1.7;
+    }
+
+    .prose ol li::before {
+      content: counter(rmira-counter, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--blue);
+      flex-shrink: 0;
+      padding-top: 5px;
+      letter-spacing: .06em;
+    }
+
+    .prose ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .prose ul li {
+      display: flex;
+      gap: 12px;
+      margin-top: .8em;
+      font-size: 15px;
+      color: var(--navy);
+      opacity: .8;
+      line-height: 1.7;
+    }
+
+    .prose ul li::before {
+      content: '—';
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* Note / footnote */
+    .article-note {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      color: var(--navy);
+      opacity: .35;
+      line-height: 1.9;
+    }
+
+    /* ── FOOTER / CTA ── */
+    .article-footer {
+      background: var(--navy);
+      color: white;
+      padding: 64px 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta-heading em { font-style: italic; color: var(--blue); }
+
+    .cta-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,.45);
+      max-width: 400px;
+      line-height: 1.65;
+    }
+
+    .cta-email {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--blue);
+      border: 1px solid rgba(43,127,212,.4);
+      padding: 16px 28px;
+      display: inline-block;
+      transition: border-color .2s, background .2s;
+      flex-shrink: 0;
+    }
+
+    .cta-email:hover {
+      border-color: var(--blue);
+      background: rgba(43,127,212,.08);
+      text-decoration: none;
+    }
+
+    /* Footer bar */
+    .footer-bar {
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.18);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-rev { display: none; }
+
+      .article-header { padding: 40px 20px 36px; }
+
+      .article-header-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .meta-time { margin-left: 0; }
+
+      .article-body { padding: 40px 20px; }
+
+      .article-footer { padding: 48px 20px; }
+
+      .article-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="../index.html" class="nav-brand">RMIRA <span style="opacity:.4">·</span> ADV</a>
+  <a href="../index.html#insights" class="nav-back">← INSIGHTS</a>
+  <span class="nav-rev">REV 2026.04</span>
+</nav>
+
+<!-- ── HEADER ── -->
+<header class="article-header">
+  <div class="article-header-inner">
+
+    <div>
+      <!-- ⚠️ ATUALIZAR: número, data, categoria e tempo -->
+      <div class="article-meta-top">
+        <span class="meta-num">INS.001</span>
+        <span class="meta-date">2026.04</span>
+        <span class="meta-cat">FIDC · REGULATÓRIO</span>
+        <span class="meta-time">12 MIN</span>
+      </div>
+
+      <!-- ⚠️ ATUALIZAR: título -->
+      <h1 class="article-title">
+        RCVM 240 e o redesenho das classes subordinadas: o que muda na prática
+      </h1>
+
+      <!-- ⚠️ ATUALIZAR: subtítulo / resumo executivo -->
+      <p class="article-subtitle">
+        Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre
+        subordinação, classes e regime informacional aplicável aos FIDCs em
+        distribuição pública.
+      </p>
+
+      <div class="article-author">
+        <div>
+          <div class="author-name">RENNAN MIRA</div>
+          <div class="author-oab">OAB/RJ 168.948 · RMIRA ADV</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spec panel -->
+    <div class="article-spec">
+      <div class="spec-label">FICHA DO INSIGHT</div>
+      <!-- ⚠️ ATUALIZAR: campos do spec -->
+      <div class="spec-line">
+        <span class="spec-lk">REGIME</span>
+        <span class="spec-lv">RCVM 240/2026</span>
+      </div>
+      <div class="spec-line">
+        <span class="spec-lk">TEMA</span>
+        <span class="spec-lv">Subordinação · Classes</span>
+      </div>
+      <div class="spec-line">
+        <span class="spec-lk">VEÍCULO</span>
+        <span class="spec-lv">FIDC Dist. Pública</span>
+      </div>
+      <div class="spec-line">
+        <span class="spec-lk">VIGÊNCIA</span>
+        <span class="spec-lv">Abr 2026</span>
+      </div>
+      <div class="spec-line">
+        <span class="spec-lk">NÍVEL</span>
+        <span class="spec-lv">Técnico</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ── BODY ── -->
+<main class="article-body">
+  <div class="prose">
+
+    <!--
+      ════════════════════════════════════════
+      ⚠️ CONTEÚDO DO ARTIGO ABAIXO
+      Use as classes disponíveis:
+        <h2>  → título de seção
+        <h3>  → subtítulo
+        <p>   → parágrafo
+        <div class="callout"><p>...</p></div>  → destaque
+        <ol><li>  → lista numerada
+        <ul><li>  → lista com traço
+      ════════════════════════════════════════
+    -->
+
+    <p>
+      A Resolução CVM 240/2026, publicada em março deste ano e vigente a partir
+      de abril, introduziu alterações relevantes na arquitetura de classes de
+      cotas de FIDCs submetidos a distribuição pública. O ponto central: a norma
+      redefiniu os parâmetros de subordinação mínima e criou novas exigências de
+      regime informacional diferenciado por classe.
+    </p>
+
+    <div class="callout">
+      <p>
+        A leitura apressada da RCVM 240 pode levar gestores a supor que as
+        mudanças são apenas formais. Não são. Há impacto direto na modelagem de
+        waterfall e na relação contratual com o custodiante.
+      </p>
+    </div>
+
+    <h2>1. O que mudou na subordinação</h2>
+
+    <p>
+      Antes da RCVM 240, o parâmetro de subordinação mínima para cotas
+      seniores em distribuição pública era definido no regulamento do fundo,
+      com referência à RCVM 175. A nova resolução estabeleceu pisos diferenciados
+      por perfil de carteira — NPL, crédito performado e multiclasse — e vinculou
+      o cálculo ao VaR da carteira, não apenas ao índice de subordinação nominal.
+    </p>
+
+    <ul>
+      <li>Carteiras NPL: subordinação mínima de 35% (era 20% na prática de mercado)</li>
+      <li>Crédito performado: 15% mínimo, com escalonamento por duration</li>
+      <li>Multiclasse: cálculo consolidado por tipo de ativo subjacente</li>
+    </ul>
+
+    <h2>2. Regime informacional diferenciado</h2>
+
+    <p>
+      A RCVM 240 também criou obrigações informacionais distintas para cada
+      classe de cota. Cotistas seniores passam a ter acesso ao relatório de
+      enquadramento em periodicidade mensal, enquanto cotistas subordinados
+      recebem o relatório completo de risco com abertura por devedor.
+    </p>
+
+    <h3>2.1 Impacto contratual</h3>
+
+    <p>
+      Esta diferenciação tem impacto direto no contrato de cessão master e no
+      regulamento. A cláusula de confidencialidade de dados de carteira precisa
+      ser revista para acomodar o nível de abertura exigido para cotistas
+      subordinados sem expor o cedente a violações de LGPD.
+    </p>
+
+    <div class="callout">
+      <p>
+        Recomendamos revisar os regulamentos em vigor antes do encerramento
+        do prazo de adequação (outubro de 2026).
+      </p>
+    </div>
+
+    <h2>3. Trade-offs práticos para gestores</h2>
+
+    <ol>
+      <li>
+        <strong>Rebalanceamento de waterfall:</strong> o aumento da subordinação
+        mínima reduz o retorno esperado para a classe sênior, o que pode
+        impactar a tese de distribuição institucional.
+      </li>
+      <li>
+        <strong>Revisão do prospecto:</strong> para fundos já em distribuição,
+        a adequação exige aditivo ao regulamento e atualização do prospecto,
+        com nova rodada de aprovação na CVM.
+      </li>
+      <li>
+        <strong>Contrato de cessão:</strong> cláusulas de elegibilidade e
+        gatilhos de recompra devem ser recalibradas aos novos parâmetros de
+        subordinação mínima.
+      </li>
+    </ol>
+
+    <h2>Conclusão</h2>
+
+    <p>
+      A RCVM 240 representa uma virada na forma como a CVM trata a arquitetura
+      de risco em FIDCs públicos. Gestoras com veículos ativos têm até outubro
+      de 2026 para adequar regulamentos e contratos. O prazo parece longo —
+      não é. A rodada de aprovação de aditivo na CVM costuma levar entre 45
+      e 90 dias em condições normais.
+    </p>
+
+    <!-- Nota de rodapé -->
+    <div class="article-note">
+      <p>
+        RMIRA ADV · INS.001 · 2026.04<br>
+        Este insight tem caráter informativo e não constitui opinião legal
+        sobre caso concreto. Para análise específica, consulte diretamente
+        o escritório. contato@rmira.com.br
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── FOOTER / CTA ── -->
+<footer class="article-footer">
+  <div class="article-footer-inner">
+    <div>
+      <h2 class="cta-heading">
+        Este tema afeta<br>
+        <em>seu veículo?</em>
+      </h2>
+      <p class="cta-sub">
+        Fazemos diagnóstico regulatório e revisão de documentação para
+        adequação à RCVM 240. Contato direto, sem formulário.
+      </p>
+    </div>
+    <a href="mailto:contato@rmira.com.br" class="cta-email">
+      contato@rmira.com.br
+    </a>
+  </div>
+
+  <div class="footer-bar">
+    <span>© 2026 RMIRA ADVOCACIA</span>
+    <!-- ⚠️ ATUALIZAR: número do arquivo -->
+    <span>FILE · INS.001</span>
+    <span>REV 2026.04</span>
+    <a href="../index.html#insights" style="color:inherit; text-decoration:none">← TODOS OS INSIGHTS</a>
+  </div>
+</footer>
+
+</body>
+</html>
