@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 290" role="img" aria-label="RMIRA ADV">
+  <g fill="#2B7FD4">
+
+    <!-- ═══ MARK — LEFT GROUP (R) ═══ -->
+    <!-- Vertical stem -->
+    <polygon points="52,18 80,18 80,175 52,175"/>
+    <!-- Upper arch (trapezoid pointing right) -->
+    <polygon points="80,18 136,18 136,30 108,78 80,78"/>
+    <!-- Arch lower triangle -->
+    <polygon points="80,78 108,78 90,104"/>
+    <!-- Leg (diagonal kick, lower-right) -->
+    <polygon points="90,116 80,132 80,175 114,175 98,140"/>
+
+    <!-- ═══ MARK — RIGHT GROUP (M / bowtie) ═══ -->
+    <!-- Upper-left triangle -->
+    <polygon points="152,18 198,18 152,96"/>
+    <!-- Upper-right triangle -->
+    <polygon points="198,18 244,18 244,64 198,96"/>
+    <!-- Lower-left triangle -->
+    <polygon points="152,108 198,108 152,175"/>
+    <!-- Lower-right triangle -->
+    <polygon points="198,108 244,64 244,175 198,175"/>
+
+  </g>
+
+  <!-- ═══ WORDMARK ═══ -->
+  <!-- RMIRA — large serif -->
+  <text x="52" y="238"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="72" font-weight="400" font-style="normal"
+        fill="#2B7FD4" letter-spacing="3">RMIRA</text>
+
+  <!-- ADV -->
+  <text x="278" y="238"
+        font-family="'Courier New', Courier, monospace"
+        font-size="22" font-weight="400"
+        fill="#2B7FD4" letter-spacing="5">ADV</text>
+
+  <!-- Divider -->
+  <line x1="337" y1="210" x2="337" y2="244" stroke="#2B7FD4" stroke-width="1"/>
+
+  <!-- Triple-A -->
+  <text x="347" y="220" font-family="'Courier New', Courier, monospace" font-size="9" fill="#2B7FD4" letter-spacing="2">ADVISORY</text>
+  <text x="347" y="232" font-family="'Courier New', Courier, monospace" font-size="9" fill="#2B7FD4" letter-spacing="2">ADVOCACY</text>
+  <text x="347" y="244" font-family="'Courier New', Courier, monospace" font-size="9" fill="#2B7FD4" letter-spacing="2">ADVANCE</text>
+</svg>
