@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RMIRA ADV — Engenharia jurídica para mercado de capitais</title>
-  <meta name="description" content="Boutique técnica em estruturação de FIDC, crédito distressed e DCM advisory. Cada mandato tratado como projeto — sem genéricos, sem volume, sem ruído.">
+  <!-- Bloco 10 -->
+  <title>RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM</title>
+  <meta name="description" content="Boutique de estruturação em FIDC, crédito distressed e DCM advisory. Mandatos desenhados por advogado-operador, com a régua do investidor sênior incorporada ao documento.">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="RMIRA ADV — Engenharia jurídica para mercado de capitais">
-  <meta property="og:description" content="Boutique técnica em estruturação de FIDC, crédito distressed e DCM advisory.">
+  <meta property="og:title" content="RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM">
+  <meta property="og:description" content="Mercado de capitais desenhado por quem também opera. FIDC, crédito distressed e DCM advisory.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rmira.com.br">
 
@@ -35,7 +34,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
       background: var(--bg);
@@ -43,12 +41,9 @@
       font-size: 15px;
       line-height: 1.6;
     }
-
     body.menu-open { overflow: hidden; }
-
     a { color: inherit; text-decoration: none; }
 
-    /* Blueprint grid */
     .grid-bg {
       background-image:
         linear-gradient(var(--grid-c) 1px, transparent 1px),
@@ -56,71 +51,41 @@
       background-size: 80px 80px;
     }
 
-    /* Anchor offset para nav sticky */
     section[id] { scroll-margin-top: var(--nav-h); }
 
     /* ─── NAV ─── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      position: sticky; top: 0; z-index: 200;
       height: var(--nav-h);
       background: var(--bg);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       justify-content: space-between;
       padding: 0 40px;
     }
-
     .nav-brand {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .1em;
-      color: var(--blue);
-      flex-shrink: 0;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .1em; color: var(--blue); flex-shrink: 0;
     }
     .nav-brand em { font-style: normal; color: var(--navy); opacity: .4; }
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .1em;
-      color: var(--navy);
-      opacity: .55;
-      transition: opacity .2s, color .2s;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: .1em; color: var(--navy);
+      opacity: .55; transition: opacity .2s, color .2s;
     }
     .nav-links a:hover { opacity: 1; color: var(--blue); }
 
-    .nav-rev {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      color: var(--navy);
-      opacity: .3;
-      flex-shrink: 0;
-    }
+    /* Bloco 11: sem .nav-rev */
 
-    /* Hamburger */
     .nav-ham {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 8px 0 8px 8px;
+      display: none; flex-direction: column;
+      justify-content: center; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 8px 0 8px 8px;
     }
     .nav-ham span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
+      display: block; width: 22px; height: 1.5px;
       background: var(--navy);
       transition: transform .28s ease, opacity .28s ease;
       transform-origin: center;
@@ -129,612 +94,312 @@
     .nav-ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* Mobile nav panel */
     .nav-mobile {
-      display: none;
-      position: fixed;
-      top: var(--nav-h);
-      left: 0; right: 0;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      display: none; position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--bg); border-bottom: 1px solid var(--border);
       z-index: 199;
     }
     .nav-mobile.open { display: block; }
     .nav-mobile a {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .1em;
-      color: var(--navy);
-      padding: 17px 24px;
-      border-bottom: 1px solid var(--border);
+      display: block; font-family: var(--mono);
+      font-size: 11px; letter-spacing: .1em; color: var(--navy);
+      padding: 17px 24px; border-bottom: 1px solid var(--border);
       transition: color .2s;
     }
     .nav-mobile a:last-child { border-bottom: none; }
     .nav-mobile a:hover { color: var(--blue); }
 
-    /* ─── TICKER ───────────────────────────────
-       Posição: entre Sec. A (hero) e Sec. B
-       Faixa editorial com títulos dos artigos
-       em loop CSS puro, sem JS.
-    ─────────────────────────────────────────── */
+    /* ─── TICKER ─── */
     .ticker-strip {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      overflow: hidden;
-      height: 38px;
-      display: flex;
-      align-items: center;
+      overflow: hidden; height: 38px;
+      display: flex; align-items: center;
     }
-
     .ticker-track {
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       white-space: nowrap;
-      /* Largura total = 2× conteúdo; anima -50% para loop perfeito */
       animation: ticker 38s linear infinite;
     }
-
     .ticker-track:hover { animation-play-state: paused; }
-
     .ticker-item {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .12em;
-      color: var(--navy);
-      opacity: .45;
-      padding: 0 36px;
-      transition: opacity .2s, color .2s;
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: .12em; color: var(--navy);
+      opacity: .45; padding: 0 36px;
     }
-
-    .ticker-item a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .ticker-item a:hover,
-    .ticker-item:hover { opacity: 1; color: var(--blue); }
-    .ticker-item a:hover { color: var(--blue); }
-
-    .ticker-sep {
-      color: var(--blue);
-      opacity: .5;
-      font-size: 8px;
-      flex-shrink: 0;
-    }
-
+    .ticker-item a { color: inherit; }
+    .ticker-item:hover, .ticker-item a:hover { opacity: 1; color: var(--blue); }
+    .ticker-sep { color: var(--blue); opacity: .5; font-size: 8px; flex-shrink: 0; }
     @keyframes ticker {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* Pausa em mobile (sem hover disponível) */
-    @media (hover: none) {
-      .ticker-track { animation-play-state: running; }
-    }
-
     /* ─── SECTION SHELL ─── */
     section { border-bottom: 1px solid var(--border); }
-    .wrap {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 80px 40px;
-    }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 80px 40px; }
 
     .sec-tag {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .14em;
-      color: var(--blue);
-      margin-bottom: 44px;
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: .14em; color: var(--blue); margin-bottom: 44px;
     }
     .sec-tag::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--blue);
-      flex-shrink: 0;
+      content: ''; display: block; width: 40px;
+      height: 1px; background: var(--blue); flex-shrink: 0;
     }
 
     .h-display {
       font-family: var(--serif);
       font-size: clamp(36px, 4.5vw, 60px);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--navy);
+      font-weight: 400; line-height: 1.1; color: var(--navy);
     }
     .h-display em { font-style: italic; color: var(--blue); }
 
     .mono-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .12em;
-      color: var(--navy);
-      opacity: .38;
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: .12em; color: var(--navy); opacity: .38;
     }
 
-    /* ─── SEC. A · POSICIONAMENTO ─── */
+    /* ─── SEC. A — HERO ─── */
     .hero-logo-bar {
       border-bottom: 1px solid var(--border);
       padding: 64px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .hero-logo-bar img {
-      max-width: 260px;
-      width: 100%;
-      display: block;
-    }
+    .hero-logo-bar img { max-width: 260px; width: 100%; display: block; }
     .logo-fallback {
-      font-family: var(--mono);
-      font-size: 18px;
-      letter-spacing: .2em;
-      color: var(--navy);
-      text-align: center;
+      font-family: var(--mono); font-size: 16px;
+      letter-spacing: .2em; color: var(--navy); text-align: center;
     }
     .logo-fallback small {
-      display: block;
-      font-size: 9px;
-      letter-spacing: .18em;
-      opacity: .35;
-      margin-top: 6px;
+      display: block; font-size: 9px; letter-spacing: .18em;
+      opacity: .35; margin-top: 6px;
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 80px;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 80px; align-items: start;
     }
     .hero-heading { margin-bottom: 36px; }
     .hero-body {
-      font-size: 15px;
-      color: var(--navy);
-      opacity: .68;
-      max-width: 480px;
-      line-height: 1.78;
-      margin-bottom: 48px;
+      font-size: 15px; color: var(--navy); opacity: .68;
+      max-width: 480px; line-height: 1.78; margin-bottom: 48px;
     }
-    .hero-promessa {
-      border-top: 1px solid var(--border);
-      padding-top: 28px;
-    }
+    .hero-promessa { border-top: 1px solid var(--border); padding-top: 28px; }
     .promessa-text {
-      font-family: var(--serif);
-      font-size: 19px;
-      font-style: italic;
-      color: var(--navy);
-      opacity: .72;
-      line-height: 1.5;
-      margin-top: 10px;
+      font-family: var(--serif); font-size: 19px; font-style: italic;
+      color: var(--navy); opacity: .72; line-height: 1.5; margin-top: 10px;
     }
 
     /* Spec Sheet */
     .spec-sheet {
-      border: 1px solid var(--border);
-      padding: 28px 28px 20px;
+      border: 1px solid var(--border); padding: 28px 28px 20px;
       background: rgba(255,255,255,.28);
     }
     .spec-title {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .14em;
-      color: var(--navy);
-      opacity: .32;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 4px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: .14em;
+      color: var(--navy); opacity: .32;
+      padding-bottom: 18px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
     }
     .spec-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--border);
-      gap: 12px;
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 11px 0; border-bottom: 1px solid var(--border); gap: 12px;
     }
     .spec-row:last-of-type { border-bottom: none; }
-    .spec-k {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .1em;
-      opacity: .38;
-      flex-shrink: 0;
-    }
-    .spec-v {
-      font-family: var(--mono);
-      font-size: 10px;
-      text-align: right;
-      word-break: break-word;
-    }
+    .spec-k { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; opacity: .38; flex-shrink: 0; }
+    .spec-v { font-family: var(--mono); font-size: 10px; text-align: right; word-break: break-word; }
     .spec-ativo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 16px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .1em;
+      display: flex; align-items: center; gap: 8px;
+      padding-top: 16px; font-family: var(--mono);
+      font-size: 10px; letter-spacing: .1em;
     }
     .ativo-sq { width: 11px; height: 11px; background: var(--blue); flex-shrink: 0; }
 
-    /* ─── SEC. B · ESPECIALIZAÇÃO ─── */
+    /* ─── CARDS (B + Track) ─── */
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--border);
     }
-    .card {
-      padding: 32px;
-      border-right: 1px solid var(--border);
-    }
+    /* Bloco 4.4: Track Record override to 2×2 */
+    #track .cards-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .card { padding: 32px; border-right: 1px solid var(--border); }
     .card:last-child { border-right: none; }
-    .card-hdr {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
+
+    /* 2-col grids: right-column cards have no right border, bottom cards have bottom border */
+    #track .card:nth-child(2n) { border-right: none; }
+    #track .card:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+
+    .card-hdr { display: flex; justify-content: space-between; margin-bottom: 20px; }
     .card-title {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 400;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 14px;
+      font-family: var(--serif); font-size: 26px; font-weight: 400;
+      color: var(--navy); line-height: 1.2; margin-bottom: 14px;
     }
     .card-body {
-      font-size: 14px;
-      color: var(--navy);
-      opacity: .65;
-      line-height: 1.72;
-      margin-bottom: 24px;
+      font-size: 14px; color: var(--navy); opacity: .65;
+      line-height: 1.72; margin-bottom: 24px;
     }
     .card-meta {
-      border-top: 1px dashed var(--border);
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
+      border-top: 1px dashed var(--border); padding-top: 20px;
+      display: flex; flex-direction: column; gap: 9px;
     }
-    .card-meta-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: 10px;
-    }
+    .card-meta-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; }
     .card-meta-k { opacity: .38; }
     .card-meta-v { color: var(--blue); }
 
-    /* ─── SEC. C · MÉTODO ─── */
+    /* ─── PHASES (SEC. C) ─── */
     .phases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--border);
     }
-    .phase {
-      padding: 40px 32px;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
+    .phase { padding: 40px 32px; border-right: 1px solid var(--border); position: relative; }
     .phase:last-child { border-right: none; }
     .phase-connector {
-      position: absolute;
-      top: 50%;
-      right: -8px;
-      width: 14px;
-      height: 14px;
-      background: var(--blue);
-      transform: translateY(-50%) rotate(45deg);
-      z-index: 1;
+      position: absolute; top: 50%; right: -8px; width: 14px; height: 14px;
+      background: var(--blue); transform: translateY(-50%) rotate(45deg); z-index: 1;
     }
     .phase:last-child .phase-connector { display: none; }
-    .phase-num-row {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+    .phase-num-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
     .phase-num {
-      font-family: var(--serif);
-      font-size: 56px;
-      font-weight: 300;
-      color: var(--blue);
-      line-height: 1;
+      font-family: var(--serif); font-size: 56px; font-weight: 300;
+      color: var(--blue); line-height: 1;
     }
-    .phase-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--navy);
-      margin-bottom: 14px;
-    }
-    .phase-body {
-      font-size: 14px;
-      color: var(--navy);
-      opacity: .65;
-      line-height: 1.72;
-      margin-bottom: 28px;
-    }
+    .phase-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--navy); margin-bottom: 14px; }
+    .phase-body { font-size: 14px; color: var(--navy); opacity: .65; line-height: 1.72; margin-bottom: 28px; }
     .phase-items { display: flex; flex-direction: column; gap: 9px; }
-    .phase-item {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .08em;
-      color: var(--blue);
-    }
+    .phase-item { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; color: var(--blue); }
 
-    /* ─── SEC. D · PARA QUEM ─── */
+    /* ─── PROFILES (SEC. D) ─── */
     .profiles-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       border: 1px solid var(--border);
     }
-    .profile {
-      padding: 40px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    .profile { padding: 40px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .profile:nth-child(2n)        { border-right: none; }
     .profile:nth-last-child(-n+2) { border-bottom: none; }
-    .profile-hdr {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
+    .profile-hdr { display: flex; justify-content: space-between; margin-bottom: 16px; }
     .profile-code { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; color: var(--blue); }
     .profile-tag  { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; opacity: .33; }
-    .profile-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--blue);
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-    .profile-body {
-      font-size: 14px;
-      color: var(--navy);
-      opacity: .65;
-      line-height: 1.72;
-      margin-bottom: 20px;
-    }
-    .profile-demanda-label {
-      font-family: var(--mono);
-      font-size: 8px;
-      letter-spacing: .12em;
-      opacity: .32;
-      margin-bottom: 10px;
-    }
+    .profile-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--blue); line-height: 1.3; margin-bottom: 12px; }
+    .profile-body { font-size: 14px; color: var(--navy); opacity: .65; line-height: 1.72; margin-bottom: 20px; }
+    .profile-demanda-label { font-family: var(--mono); font-size: 8px; letter-spacing: .12em; opacity: .32; margin-bottom: 10px; }
     .profile-demanda { font-size: 13px; color: var(--blue); line-height: 1.65; }
 
-    /* ─── SEC. E · INSIGHTS ─── */
+    /* ─── INSIGHTS ─── */
     .insight-row {
-      display: grid;
-      grid-template-columns: 130px 1fr 60px;
-      gap: 40px;
-      padding: 36px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
+      display: grid; grid-template-columns: 130px 1fr 60px;
+      gap: 40px; padding: 36px 0;
+      border-bottom: 1px solid var(--border); align-items: start;
     }
     .insight-row:last-child { border-bottom: none; }
-    .ins-meta {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .07em;
-      line-height: 1.9;
-    }
+    .ins-meta { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; line-height: 1.9; }
     .ins-num  { color: var(--navy); opacity: .32; }
     .ins-date { color: var(--blue); }
     .ins-cat  { color: var(--navy); opacity: .38; margin-top: 6px; }
     .ins-title {
-      display: block;
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--blue);
-      line-height: 1.35;
-      margin-bottom: 10px;
-      transition: opacity .2s;
+      display: block; font-family: var(--serif); font-size: 20px; font-weight: 400;
+      color: var(--blue); line-height: 1.35; margin-bottom: 10px; transition: opacity .2s;
     }
     .ins-title:hover { opacity: .72; }
-    .ins-desc {
-      font-size: 14px;
-      color: var(--navy);
-      opacity: .62;
-      line-height: 1.72;
-    }
-    .ins-time {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .07em;
-      color: var(--navy);
-      opacity: .28;
-      text-align: right;
-      padding-top: 4px;
-      white-space: nowrap;
-    }
+    .ins-desc { font-size: 14px; color: var(--navy); opacity: .62; line-height: 1.72; }
+    .ins-time { font-family: var(--mono); font-size: 9px; letter-spacing: .07em; color: var(--navy); opacity: .28; text-align: right; padding-top: 4px; white-space: nowrap; }
 
-    /* ─── SEC. F · CONTATO ─── */
+    /* ─── CONTATO ─── */
     #contato { background: var(--navy); color: white; border-bottom: none; }
     #contato .sec-tag         { color: rgba(255,255,255,.32); }
     #contato .sec-tag::before { background: rgba(255,255,255,.22); }
 
     .contato-title {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: white;
-      margin-bottom: 20px;
+      font-family: var(--serif); font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400; line-height: 1.15; color: white; margin-bottom: 20px;
     }
     .contato-title em { font-style: italic; color: var(--blue); }
-    .contato-subtitle {
-      font-size: 15px;
-      color: rgba(255,255,255,.48);
-      max-width: 520px;
-      line-height: 1.72;
-      margin-bottom: 56px;
-    }
+    .contato-subtitle { font-size: 15px; color: rgba(255,255,255,.48); max-width: 520px; line-height: 1.72; margin-bottom: 56px; }
 
-    /* ── Grid inner — o que estava quebrado no mobile ── */
-    .contato-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--border-wt);
-    }
-    .contato-logo-col {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 48px;
-      border-right: 1px solid var(--border-wt);
-    }
-    .contato-logo-col img {
-      max-width: 220px;
-      width: 100%;
-      display: block;
-      opacity: .88;
-    }
-    .logo-fallback-wt {
-      font-family: var(--mono);
-      font-size: 16px;
-      letter-spacing: .2em;
-      color: white;
-      text-align: center;
-    }
-    .logo-fallback-wt small {
-      display: block;
-      font-size: 9px;
-      letter-spacing: .16em;
-      opacity: .32;
-      margin-top: 6px;
-    }
+    .contato-inner { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-wt); }
+    .contato-logo-col { display: flex; align-items: center; justify-content: center; padding: 60px 48px; border-right: 1px solid var(--border-wt); }
+    .contato-logo-col img { max-width: 220px; width: 100%; display: block; opacity: .88; }
+    .logo-fallback-wt { font-family: var(--mono); font-size: 16px; letter-spacing: .2em; color: white; text-align: center; }
+    .logo-fallback-wt small { display: block; font-size: 9px; letter-spacing: .16em; opacity: .32; margin-top: 6px; }
     .contato-data-col { padding: 40px 48px; }
-    .contato-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border-wt);
-      gap: 24px;
-    }
+    .contato-row { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--border-wt); gap: 24px; }
     .contato-row:last-child { border-bottom: none; }
-    .c-key {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .14em;
-      color: rgba(255,255,255,.30);
-      flex-shrink: 0;
-    }
-    .c-val {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: rgba(255,255,255,.75);
-      text-align: right;
-      line-height: 1.5;
-      word-break: break-word;
-    }
+    .c-key { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; color: rgba(255,255,255,.30); flex-shrink: 0; }
+    .c-val { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.75); text-align: right; line-height: 1.5; word-break: break-word; }
 
+    /* Bloco 11: footer bar 3 elementos */
     .contato-footer-bar {
-      max-width: 1400px;
-      margin: 0 auto;
+      max-width: 1400px; margin: 0 auto;
       border-top: 1px solid var(--border-wt);
       padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .08em;
-      color: rgba(255,255,255,.18);
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: .08em; color: rgba(255,255,255,.18);
     }
 
-    /* ═══════════════════════════════════════
-       MOBILE  ≤ 768px
-    ═══════════════════════════════════════ */
+    /* ═══════════════════════════════
+       MOBILE ≤ 768px
+    ═══════════════════════════════ */
     @media (max-width: 768px) {
-
-      /* NAV */
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .nav-ham   { display: flex; }
 
-      /* SECTIONS */
       .wrap { padding: 48px 20px; }
 
-      /* TICKER — velocidade menor no mobile */
       .ticker-track { animation-duration: 22s; }
 
-      /* SEC. A */
       .hero-logo-bar { padding: 40px 20px; }
       .hero-logo-bar img { max-width: 190px; }
       .hero-grid { grid-template-columns: 1fr; gap: 36px; }
       .hero-body { font-size: 14px; }
 
-      /* SEC. B */
-      .cards-grid      { grid-template-columns: 1fr; }
-      .card            { border-right: none; border-bottom: 1px solid var(--border); }
-      .card:last-child { border-bottom: none; }
+      .cards-grid           { grid-template-columns: 1fr; }
+      .card                 { border-right: none; border-bottom: 1px solid var(--border); }
+      .card:last-child      { border-bottom: none; }
 
-      /* SEC. C */
+      /* Track Record mobile override */
+      #track .cards-grid    { grid-template-columns: 1fr; }
+      #track .card          { border-right: none; border-bottom: 1px solid var(--border); }
+      #track .card:last-child { border-bottom: none; }
+
       .phases-grid      { grid-template-columns: 1fr; }
       .phase            { border-right: none; border-bottom: 1px solid var(--border); }
       .phase:last-child { border-bottom: none; }
       .phase-connector  { display: none; }
 
-      /* SEC. D */
       .profiles-grid                { grid-template-columns: 1fr; }
       .profile                      { border-right: none; }
       .profile:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
       .profile:last-child           { border-bottom: none; }
 
-      /* SEC. E */
       .insight-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
       .ins-meta    { display: flex; gap: 14px; flex-wrap: wrap; }
       .ins-cat     { margin-top: 0; }
       .ins-time    { text-align: left; }
 
-      /* SEC. F — FIX PRINCIPAL */
+      /* Contato mobile fix */
       .contato-inner { grid-template-columns: 1fr; }
-
-      .contato-logo-col {
-        border-right: none;
-        border-bottom: 1px solid var(--border-wt);
-        padding: 40px 24px;
-      }
+      .contato-logo-col { border-right: none; border-bottom: 1px solid var(--border-wt); padding: 40px 24px; }
       .contato-logo-col img { max-width: 150px; }
-
       .contato-data-col { padding: 28px 24px; }
-
-      /* Label em cima, valor abaixo */
-      .contato-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 16px 0;
-      }
+      .contato-row { flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 0; }
       .c-val { text-align: left; font-size: 12px; }
-
       .contato-footer-bar { padding: 16px 20px; flex-direction: column; }
     }
 
     @media (max-width: 380px) {
       .nav-brand { font-size: 10px; }
-      .nav-rev   { font-size: 9px;  }
     }
   </style>
 </head>
 <body>
 
 <!-- ══════════════════════════════════════
-     NAV
+     NAV — Bloco 4.1 + Bloco 11 (sem REV)
 ══════════════════════════════════════ -->
 <nav>
   <a href="#posicionamento" class="nav-brand">RMIRA <em>·</em> ADV</a>
@@ -742,6 +407,7 @@
   <ul class="nav-links" role="navigation" aria-label="Menu principal">
     <li><a href="#especializacao">ESPECIALIZAÇÃO</a></li>
     <li><a href="#metodo">OPERAÇÃO</a></li>
+    <li><a href="#track">TRACK</a></li>
     <li><a href="#paraquem">PARA QUEM</a></li>
     <li><a href="#insights">INSIGHTS</a></li>
     <li><a href="#contato">CONTATO</a></li>
@@ -750,13 +416,13 @@
   <button class="nav-ham" id="hamBtn" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-
-  <span class="nav-rev">REV 2026.04</span>
 </nav>
 
+<!-- Mobile nav — Bloco 4.2 -->
 <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Menu mobile">
   <a href="#especializacao">ESPECIALIZAÇÃO</a>
   <a href="#metodo">OPERAÇÃO</a>
+  <a href="#track">TRACK</a>
   <a href="#paraquem">PARA QUEM</a>
   <a href="#insights">INSIGHTS</a>
   <a href="#contato">CONTATO</a>
@@ -780,25 +446,32 @@
     <div class="hero-grid">
 
       <div>
+        <!-- Bloco 1.1 -->
         <div class="hero-heading h-display">
-          <em>Engenharia jurídica</em><br>
-          para mercado<br>
-          de capitais.
+          Mercado de capitais<br>
+          <em>desenhado por quem</em><br>
+          <em>também opera.</em>
         </div>
+
+        <!-- Bloco 1.2 -->
         <p class="hero-body">
-          Boutique técnica em estruturação de FIDC, crédito distressed e DCM
-          advisory. Cada mandato é tratado como projeto: diagnóstico regulatório,
-          estruturação da operação e execução documental — sem genéricos, sem
-          volume, sem ruído.
+          Boutique de estruturação em FIDC, crédito distressed e DCM advisory.
+          Cada mandato é desenhado por advogado-operador: quem assina o documento
+          conhece a tese de investimento, a régua do investidor sênior e o atrito
+          regulatório antes de o cedente sentar à mesa.
         </p>
+
+        <!-- Bloco 1.3 -->
         <div class="hero-promessa">
           <div class="mono-label">PROMESSA OPERACIONAL</div>
           <p class="promessa-text">
-            Inteligência jurídica, projetada com a precisão de um blueprint.
+            Cada operação é tratada como projeto: tese, blueprint, execução —
+            no ciclo do deal, não no calendário do escritório.
           </p>
         </div>
       </div>
 
+      <!-- Bloco 1.4 — Spec Sheet -->
       <div class="spec-sheet">
         <div class="spec-title">SPEC SHEET · 001</div>
         <div class="spec-row">
@@ -817,9 +490,15 @@
           <span class="spec-k">MANDATO</span>
           <span class="spec-v">Recorrente / Project</span>
         </div>
+        <!-- Bloco 1.4 alt.1: Success Fee -->
         <div class="spec-row">
           <span class="spec-k">MODELO</span>
-          <span class="spec-v">Retainer · Project · Success</span>
+          <span class="spec-v">Retainer · Project · Success Fee</span>
+        </div>
+        <!-- Bloco 1.4 alt.2: nova linha CADÊNCIA -->
+        <div class="spec-row">
+          <span class="spec-k">CADÊNCIA</span>
+          <span class="spec-v">Insight mensal</span>
         </div>
         <div class="spec-ativo">
           <span class="ativo-sq"></span>
@@ -832,52 +511,56 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     TICKER · INSIGHTS EM LOOP
-     Posição: entre Sec. A e Sec. B
-     Sinaliza produção editorial ativa
+     TICKER — Bloco 6.1 (com datas)
 ══════════════════════════════════════ -->
 <div class="ticker-strip" aria-hidden="true">
   <div class="ticker-track">
     <!-- SET 1 -->
-    <span class="ticker-item"><a href="insights/ins-001.html">INS.001 · RCVM 240 — O Redesenho das Classes Subordinadas</a></span>
+    <span class="ticker-item"><a href="insights/ins-001.html">INS.001 · ABR 26 · RCVM 240 — Redesenho das Classes Subordinadas</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-002.html">INS.002 · Aquisição NPL — Estruturação por FIDC NP</a></span>
+    <span class="ticker-item"><a href="insights/ins-002.html">INS.002 · MAR 26 · Aquisição NPL via FIDC NP</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-003.html">INS.003 · Lastro Agrícola — Elegibilidade CRA 2026</a></span>
+    <span class="ticker-item"><a href="insights/ins-003.html">INS.003 · FEV 26 · Lastro Agrícola — Elegibilidade CRA 2026</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-004.html">INS.004 · Contratos de Cessão — Gatilhos de Recompra</a></span>
+    <span class="ticker-item"><a href="insights/ins-004.html">INS.004 · JAN 26 · Cessão — Gatilhos Críticos de Recompra</a></span>
     <span class="ticker-sep">◆</span>
     <!-- SET 2 (duplicado para loop contínuo) -->
-    <span class="ticker-item"><a href="insights/ins-001.html">INS.001 · RCVM 240 — O Redesenho das Classes Subordinadas</a></span>
+    <span class="ticker-item"><a href="insights/ins-001.html">INS.001 · ABR 26 · RCVM 240 — Redesenho das Classes Subordinadas</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-002.html">INS.002 · Aquisição NPL — Estruturação por FIDC NP</a></span>
+    <span class="ticker-item"><a href="insights/ins-002.html">INS.002 · MAR 26 · Aquisição NPL via FIDC NP</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-003.html">INS.003 · Lastro Agrícola — Elegibilidade CRA 2026</a></span>
+    <span class="ticker-item"><a href="insights/ins-003.html">INS.003 · FEV 26 · Lastro Agrícola — Elegibilidade CRA 2026</a></span>
     <span class="ticker-sep">◆</span>
-    <span class="ticker-item"><a href="insights/ins-004.html">INS.004 · Contratos de Cessão — Gatilhos de Recompra</a></span>
+    <span class="ticker-item"><a href="insights/ins-004.html">INS.004 · JAN 26 · Cessão — Gatilhos Críticos de Recompra</a></span>
     <span class="ticker-sep">◆</span>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════
-     SEC. B · ESPECIALIZAÇÃO
+     SEC. B · ESPECIALIZAÇÃO — Bloco 2
 ══════════════════════════════════════ -->
 <section id="especializacao" class="grid-bg">
   <div class="wrap">
     <div class="sec-tag">SEC. B · ESPECIALIZAÇÃO</div>
-    <h2 class="h-display" style="margin-bottom:40px">Três frentes,<br>uma disciplina.</h2>
+
+    <!-- Bloco 2.1 -->
+    <h2 class="h-display" style="margin-bottom:40px">Três frentes.<br><em>Uma régua.</em></h2>
 
     <div class="cards-grid">
+
       <div class="card">
         <div class="card-hdr">
           <span class="mono-label">B.001</span>
-          <span class="mono-label">REV.01</span>
+          <!-- Bloco 11: REV.01 → RECORRENTE -->
+          <span class="mono-label">RECORRENTE</span>
         </div>
         <h3 class="card-title">Estruturação de FIDC</h3>
+        <!-- Bloco 2.2 -->
         <p class="card-body">
-          Constituição e revisão de fundos sob a RCVM 175/240. Modelagem de classes
-          de cotas seniores, subordinadas e mezanino, regulamento, contrato de cessão
-          master, política de investimento e parecer regulatório recorrente.
+          Constituição e revisão de fundos sob RCVM 175/240, com modelagem de cotas
+          seniores, subordinadas e mezanino calibrada para a tese do investidor-âncora.
+          Regulamento, cessão master e política de investimento desenhados a partir do
+          que o gestor precisa defender no comitê — não a partir do template.
         </p>
         <div class="card-meta">
           <div class="card-meta-row"><span class="card-meta-k">Regime</span><span class="card-meta-v">RCVM 175 / 240</span></div>
@@ -889,31 +572,37 @@
       <div class="card">
         <div class="card-hdr">
           <span class="mono-label">B.002</span>
-          <span class="mono-label">REV.01</span>
+          <!-- Bloco 11 -->
+          <span class="mono-label">PROJECT</span>
         </div>
         <h3 class="card-title">Crédito Distressed</h3>
+        <!-- Bloco 2.3 -->
         <p class="card-body">
-          Diagnóstico de carteiras NPL, judicializadas e ativos depreciados.
-          Estruturação de aquisição, FIDC NP, due diligence pré-aquisição e teses
-          de recuperação sob a Lei 14.112/2020.
+          Diagnóstico e aquisição de carteiras NPL, ativos judicializados e créditos
+          em recuperação. FIDC NP, due diligence pré-aquisição e teses de retomada
+          sob a Lei 14.112/2020 — modeladas com o desconto que sobrevive ao comitê
+          do investidor, não com o que parece bom no pitch.
         </p>
         <div class="card-meta">
           <div class="card-meta-row"><span class="card-meta-k">Regime</span><span class="card-meta-v">Lei 14.112/2020</span></div>
           <div class="card-meta-row"><span class="card-meta-k">Output</span><span class="card-meta-v">DD + Estrutura</span></div>
-          <div class="card-meta-row"><span class="card-meta-k">Modelo</span><span class="card-meta-v">Project + Success</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Modelo</span><span class="card-meta-v">Project + Success Fee</span></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-hdr">
           <span class="mono-label">B.003</span>
-          <span class="mono-label">REV.01</span>
+          <!-- Bloco 11 -->
+          <span class="mono-label">MID-MARKET</span>
         </div>
         <h3 class="card-title">DCM Advisory</h3>
+        <!-- Bloco 2.4 -->
         <p class="card-body">
-          Suporte legal a emissões de CRA, CRI, debêntures e operações lastreadas.
-          Opinião legal, revisão de prospecto, suitability regulatório e estruturação
-          ao lado de coordenadores e securitizadoras.
+          Suporte a emissões de CRA, CRI, debêntures e operações lastreadas
+          mid-market. Opinião legal, revisão de prospecto e suitability regulatório
+          com a leitura do investidor institucional já incorporada — não como
+          comentário externo no fim do processo.
         </p>
         <div class="card-meta">
           <div class="card-meta-row"><span class="card-meta-k">Regime</span><span class="card-meta-v">RCVM 160 / 88</span></div>
@@ -921,19 +610,21 @@
           <div class="card-meta-row"><span class="card-meta-k">Foco</span><span class="card-meta-v">Mid-market</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     SEC. C · MÉTODO
+     SEC. C · MÉTODO / OPERAÇÃO — Bloco 3
 ══════════════════════════════════════ -->
 <section id="metodo" class="grid-bg">
   <div class="wrap">
     <div class="sec-tag">SEC. C · MÉTODO</div>
-    <h2 class="h-display" style="margin-bottom:40px">Como operamos.</h2>
+    <h2 class="h-display" style="margin-bottom:40px">Operação.</h2>
 
     <div class="phases-grid">
+
       <div class="phase">
         <div class="phase-connector"></div>
         <div class="phase-num-row">
@@ -941,9 +632,11 @@
           <span class="phase-num">01</span>
         </div>
         <h3 class="phase-title">Diagnóstico</h3>
+        <!-- Bloco 3.1 -->
         <p class="phase-body">
           Leitura técnica do problema antes do desenho da solução. Mapeamento
-          regulatório, análise de risco, conflito e perímetro de viabilidade.
+          regulatório, análise de risco e identificação de conflitos — em
+          documento curto, com perímetro de viabilidade explícito.
         </p>
         <div class="phase-items">
           <span class="phase-item">— ANÁLISE CVM / BACEN</span>
@@ -959,9 +652,12 @@
           <span class="phase-num">02</span>
         </div>
         <h3 class="phase-title">Estruturação</h3>
+        <!-- Bloco 3.2 -->
         <p class="phase-body">
-          Desenho da operação em camadas — societária, regulatória, contratual e
-          tributária — com decisões justificadas e trade-offs explicitados ao cliente.
+          Desenho da operação em camadas — societária, regulatória, contratual
+          e tributária. Cada decisão estruturante chega ao cliente com o trade-off
+          explicitado: o que se ganha, o que se abre mão, e por que esta é a
+          rota.
         </p>
         <div class="phase-items">
           <span class="phase-item">— MODELAGEM DA OPERAÇÃO</span>
@@ -976,9 +672,11 @@
           <span class="phase-num">03</span>
         </div>
         <h3 class="phase-title">Execução</h3>
+        <!-- Bloco 3.3 -->
         <p class="phase-body">
-          Implementação documental, interlocução com reguladores e contrapartes, e
-          acompanhamento até o fechamento e estabilização do veículo ou operação.
+          Implementação documental, interlocução com reguladores e contrapartes,
+          e acompanhamento até closing. Pós-closing supervisionado nos primeiros
+          ciclos do veículo — o desenho só é válido se sobrevive à operação.
         </p>
         <div class="phase-items">
           <span class="phase-item">— DOCUMENTAÇÃO FINAL</span>
@@ -986,12 +684,105 @@
           <span class="phase-item">— CLOSING E PÓS-CLOSING</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     SEC. D · PARA QUEM
+     SEC. C.5 · TRACK RECORD — Bloco 4.3
+══════════════════════════════════════ -->
+<section id="track" class="grid-bg">
+  <div class="wrap">
+    <div class="sec-tag">SEC. C.5 · TRACK RECORD</div>
+    <h2 class="h-display" style="margin-bottom:40px">Operações<br><em>recentes.</em></h2>
+
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="mono-label">TR.001</span>
+          <span class="mono-label">RECORRENTE</span>
+        </div>
+        <h3 class="card-title">FIDC Redutor · Multicedente</h3>
+        <p class="card-body">
+          Estruturação de FIDC com tese de eficiência tributária para gestora
+          independente, integrando múltiplos originadores em regulamento e
+          contratos master únicos. Modelagem regulatória, política de
+          investimento e parecer de suporte ao comitê.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-row"><span class="card-meta-k">Regime</span><span class="card-meta-v">RCVM 175</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Cedentes</span><span class="card-meta-v">Multi-originador</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Status</span><span class="card-meta-v">Em operação</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="mono-label">TR.002</span>
+          <span class="mono-label">PROJECT</span>
+        </div>
+        <h3 class="card-title">Funding via FIDC · Plataforma Digital</h3>
+        <p class="card-body">
+          Estruturação de funding institucional via FIDC e cessão master para
+          plataforma de crédito digital. Diagnóstico regulatório BACEN/CVM,
+          modelagem da operação e documentação até closing.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-row"><span class="card-meta-k">Regime</span><span class="card-meta-v">RCVM 175 · BACEN</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Output</span><span class="card-meta-v">FIDC + Cessão</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Status</span><span class="card-meta-v">Em diligence</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="mono-label">TR.003</span>
+          <span class="mono-label">PROJECT</span>
+        </div>
+        <h3 class="card-title">Term Sheet + SPA · Entrada de Investidor</h3>
+        <p class="card-body">
+          Desenho da estrutura de entrada de investidor minoritário em plataforma
+          de crédito jurídico, incluindo Term Sheet, SPA, contrato de originação
+          e arquitetura de governança com preferências de saída.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-row"><span class="card-meta-k">Output</span><span class="card-meta-v">TS · SPA · Origination</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Modelo</span><span class="card-meta-v">Project</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Status</span><span class="card-meta-v">Em negociação</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <span class="mono-label">TR.004</span>
+          <span class="mono-label">PROJECT</span>
+        </div>
+        <h3 class="card-title">Endowment · Veículo Patrimonial</h3>
+        <p class="card-body">
+          Estruturação de veículo patrimonial para family office, com política
+          de investimento, regulamento e arquitetura de governança alinhada à
+          sucessão. Project com supervisão pós-implantação.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-row"><span class="card-meta-k">Output</span><span class="card-meta-v">Regulamento + Política</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Modelo</span><span class="card-meta-v">Project + Supervisão</span></div>
+          <div class="card-meta-row"><span class="card-meta-k">Status</span><span class="card-meta-v">Em implantação</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="ins-desc" style="margin-top:32px; max-width:720px; opacity:.55;">
+      Operações anonimizadas em respeito a obrigações de confidencialidade.
+      Detalhes técnicos e referências cruzadas disponíveis sob conversa direta.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEC. D · PARA QUEM — Bloco 5
 ══════════════════════════════════════ -->
 <section id="paraquem" class="grid-bg">
   <div class="wrap">
@@ -999,15 +790,19 @@
     <h2 class="h-display" style="margin-bottom:40px">Para quem.</h2>
 
     <div class="profiles-grid">
+
       <div class="profile">
         <div class="profile-hdr">
           <span class="profile-code">T.01</span>
           <span class="profile-tag">PERFIL</span>
         </div>
         <h3 class="profile-title">Gestoras de FIDC mid e small market</h3>
+        <!-- Bloco 5.1 -->
         <p class="profile-body">
-          Gestoras independentes com PL entre R$ 50 mi e R$ 800 mi, equipe jurídica
-          enxuta e cadência regular de operações novas.
+          Gestoras independentes com PL entre R$ 50 mi e R$ 800 mi, jurídico
+          interno enxuto e cadência regular de operações novas. Procuram a casa
+          quando estruturam veículo novo ou enfrentam adequação regulatória sob
+          prazo da CVM.
         </p>
         <div class="profile-demanda-label">DEMANDA TÍPICA</div>
         <p class="profile-demanda">
@@ -1022,9 +817,12 @@
           <span class="profile-tag">PERFIL</span>
         </div>
         <h3 class="profile-title">Fintechs de crédito Série A–C</h3>
+        <!-- Bloco 5.2 -->
         <p class="profile-body">
-          Originadoras, SCDs, SEPs e plataformas de crédito com captação institucional
-          confirmada e funding em desenho.
+          Originadoras, SCDs, SEPs e plataformas de crédito Série A–C com captação
+          institucional confirmada e funding em desenho. Procuram a casa quando
+          precisam apresentar estrutura defensável a investidor sênior antes
+          do closing.
         </p>
         <div class="profile-demanda-label">DEMANDA TÍPICA</div>
         <p class="profile-demanda">
@@ -1039,9 +837,11 @@
           <span class="profile-tag">PERFIL</span>
         </div>
         <h3 class="profile-title">Securitizadoras e bancos mid-market</h3>
+        <!-- Bloco 5.3 -->
         <p class="profile-body">
-          Securitizadoras independentes e mesas de DCM atuando como coordenadores em
-          emissões mid-market.
+          Securitizadoras independentes e mesas de DCM atuando como coordenadores
+          em emissões mid-market. Procuram a casa quando o legal opinion precisa
+          chegar no ritmo do book, não no ritmo do escritório.
         </p>
         <div class="profile-demanda-label">DEMANDA TÍPICA</div>
         <p class="profile-demanda">
@@ -1055,21 +855,24 @@
           <span class="profile-tag">PERFIL</span>
         </div>
         <h3 class="profile-title">Fundos de distressed e special situations</h3>
+        <!-- Bloco 5.4 -->
         <p class="profile-body">
           Gestoras especializadas em ativos depreciados, NPLs e operações em
-          recuperação judicial.
+          recuperação. Procuram a casa quando o desconto da carteira depende
+          da tese jurídica, não apenas do modelo financeiro.
         </p>
         <div class="profile-demanda-label">DEMANDA TÍPICA</div>
         <p class="profile-demanda">
           Due diligence pré-aquisição, estruturação de carteira e teses de recuperação.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     SEC. E · INSIGHTS
+     SEC. E · INSIGHTS — Bloco 6.2
 ══════════════════════════════════════ -->
 <section id="insights" class="grid-bg">
   <div class="wrap">
@@ -1084,8 +887,9 @@
           <div class="ins-cat">FIDC · REGULATÓRIO</div>
         </div>
         <div>
+          <!-- Bloco 6.2 INS.001 -->
           <a href="insights/ins-001.html" class="ins-title">
-            RCVM 240 e o redesenho das classes subordinadas: o que muda na prática
+            RCVM 240 — a armadilha de subordinação que poucos leram direito
           </a>
           <p class="ins-desc">
             Análise das alterações estruturais introduzidas pela RCVM 240/2026 sobre
@@ -1103,8 +907,9 @@
           <div class="ins-cat">DISTRESSED</div>
         </div>
         <div>
+          <!-- Bloco 6.2 INS.002 -->
           <a href="insights/ins-002.html" class="ins-title">
-            Aquisição de carteiras NPL pós-Lei 14.112: estruturação por FIDC NP
+            NPL pós-Lei 14.112 — quando o FIDC NP virou o veículo padrão
           </a>
           <p class="ins-desc">
             Discussão técnica sobre a viabilidade da aquisição de carteiras inadimplentes
@@ -1121,8 +926,9 @@
           <div class="ins-cat">DCM · CRA</div>
         </div>
         <div>
+          <!-- Bloco 6.2 INS.003 -->
           <a href="insights/ins-003.html" class="ins-title">
-            Lastro agrícola e o limite de elegibilidade: pontos de fricção em emissões 2026
+            Lastro agrícola — o que a CVM aceita e o mercado finge que entende
           </a>
           <p class="ins-desc">
             Mapeamento das principais divergências entre o entendimento da CVM e a prática
@@ -1156,7 +962,7 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     SEC. F · CONTATO
+     SEC. F · CONTATO — Bloco 7
 ══════════════════════════════════════ -->
 <section id="contato">
   <div class="wrap">
@@ -1164,9 +970,11 @@
     <h2 class="contato-title">
       Conversas técnicas,<br><em>sob agendamento.</em>
     </h2>
+    <!-- Bloco 7.1 -->
     <p class="contato-subtitle">
-      Não operamos por formulário aberto. Contato direto, mediado por relacionamento
-      ou referência técnica. Resposta em até 48 horas úteis.
+      Não operamos por formulário aberto. Mandatos novos entram por contato
+      direto: e-mail técnico, agenda mediada ou indicação. Resposta em até
+      24 horas úteis.
     </p>
   </div>
 
@@ -1200,10 +1008,10 @@
     </div>
   </div>
 
+  <!-- Bloco 11: 3 elementos apenas -->
   <div class="contato-footer-bar">
     <span>© 2026 RMIRA ADVOCACIA</span>
     <span>FILE · 001/INDEX</span>
-    <span>REV 2026.04</span>
     <span>SCALE 1:1</span>
   </div>
 </section>
