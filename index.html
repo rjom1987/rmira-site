@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM</title>
-  <!-- build: magnet-v6 -->
+  <!-- build: magnet-v7 -->
   <meta name="description" content="Boutique de estruturação em FIDC, crédito distressed e DCM advisory. Do blueprint ao enforcement: a mesma régua atravessa o ciclo do ativo — da estruturação à realização.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,7 +325,7 @@
       .cycle-rail, .icp-list, .feed-panel { margin-top: 1.6rem; }
       .icp-item { padding: 1.35rem 0; }
       .cycle-rail { gap: 1.9rem; }
-      section { scroll-margin-top: 53px; }
+      section { scroll-margin-top: 53px; min-height: calc(100vh - 53px); min-height: calc(100svh - 53px); }
       #contato { min-height: calc(100vh - 53px); min-height: calc(100svh - 53px); }
       .contato-footer { margin-top: auto; }
     }
@@ -541,24 +541,32 @@
 </script>
 <script>
   (function () {
-    var lock = false, t = null;
+    var lock = false, t = null, lastY = window.scrollY, dirDown = true;
     var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function headerH() { return window.innerWidth <= 600 ? 53 : 57; }
+    function align() {
+      var mob = window.innerWidth <= 600;
+      var h = mob ? 53 : 57;
+      var zone = mob ? Math.min(window.innerHeight * 0.5, 400) : 160;
+      var best = null, bestD = 1e9;
+      document.querySelectorAll('section[id]').forEach(function (s) {
+        var d = s.getBoundingClientRect().top - h;
+        if (Math.abs(d) < Math.abs(bestD)) { bestD = d; best = s; }
+      });
+      if (!best || Math.abs(bestD) <= 2) return;
+      var act = dirDown ? (bestD > 2 && bestD < zone) : (bestD < -2 && bestD > -zone);
+      if (act) {
+        lock = true;
+        window.scrollBy({ top: bestD, behavior: mq.matches ? 'auto' : 'smooth' });
+        setTimeout(function () { lock = false; }, 700);
+      }
+    }
     window.addEventListener('scroll', function () {
       if (lock) return;
+      var y = window.scrollY;
+      if (Math.abs(y - lastY) > 2) dirDown = y > lastY;
+      lastY = y;
       clearTimeout(t);
-      t = setTimeout(function () {
-        var h = headerH(), best = null, bestD = 1e9;
-        document.querySelectorAll('section[id]').forEach(function (s) {
-          var d = s.getBoundingClientRect().top - h;
-          if (Math.abs(d) < Math.abs(bestD)) { bestD = d; best = s; }
-        });
-        if (best && Math.abs(bestD) > 2 && Math.abs(bestD) < 140) {
-          lock = true;
-          window.scrollBy({ top: bestD, behavior: mq.matches ? 'auto' : 'smooth' });
-          setTimeout(function () { lock = false; }, 650);
-        }
-      }, 150);
+      t = setTimeout(align, 150);
     }, { passive: true });
   })();
 </script>
