@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM</title>
-  <!-- build: arrow-v2 -->
+  <!-- build: loop-v3 -->
   <meta name="description" content="Boutique de estruturação em FIDC, crédito distressed e DCM advisory. Do blueprint ao enforcement: a mesma régua atravessa o ciclo do ativo — da estruturação à realização.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    html { scroll-padding-top: 5.2rem; }
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -82,7 +81,7 @@
 
     /* ── Section label ── */
     .sec-label { display: flex; align-items: center; gap: 0.75rem; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.2em; color: var(--cyan-ink); text-transform: uppercase; margin-bottom: 2.25rem; }
-    section { scroll-margin-top: 56px; }
+    section { scroll-margin-top: 4.5rem; }
 
     /* ════════ HERO ════════ */
     #posicionamento { }
@@ -280,26 +279,24 @@
 
     /* ===== tangram label bar ===== */
     .sec-label svg.lbl-tg { display: block; flex-shrink: 0; overflow: visible; }
-    .sec-label .p { fill: var(--cyan); transform-box: fill-box; transform-origin: center; transition: transform .85s cubic-bezier(.22,.8,.26,1); }
-    .reveal .sec-label .p1 { transform: translate(3.5px, -4.95px) rotate(-135deg); }
-    .reveal .sec-label .p2 { transform: translate(3.5px, 4.95px) rotate(-135deg); }
-    .reveal .sec-label .p3 { transform: translate(1.45px, 3.5px) rotate(45deg); }
-    .reveal .sec-label .p4 { transform: translate(-8.45px, -3.5px) rotate(135deg); }
-    .reveal.in .sec-label .p1, .reveal.in .sec-label .p2, .reveal.in .sec-label .p3, .reveal.in .sec-label .p4 { transform: none; }
-    .reveal.in .sec-label .p1 { transition-delay: .45s; }
-    .reveal.in .sec-label .p2 { transition-delay: .55s; }
-    .reveal.in .sec-label .p3 { transition-delay: .65s; }
-    .reveal.in .sec-label .p4 { transition-delay: .75s; }
+    .sec-label .p { fill: var(--cyan); transform-box: fill-box; transform-origin: center; animation: 11s cubic-bezier(.22,.8,.26,1) infinite both; }
+    .sec-label .p1 { animation-name: tgp1; }
+    .sec-label .p2 { animation-name: tgp2; animation-delay: .09s; }
+    .sec-label .p3 { animation-name: tgp3; animation-delay: .18s; }
+    .sec-label .p4 { animation-name: tgp4; animation-delay: .27s; }
+    @keyframes tgp1 { 0%, 16% { transform: translate(3.5px, -4.95px) rotate(-135deg); } 30%, 66% { transform: none; } 80%, 100% { transform: translate(3.5px, -4.95px) rotate(-135deg); } }
+    @keyframes tgp2 { 0%, 16% { transform: translate(3.5px, 4.95px) rotate(-135deg); } 30%, 66% { transform: none; } 80%, 100% { transform: translate(3.5px, 4.95px) rotate(-135deg); } }
+    @keyframes tgp3 { 0%, 16% { transform: translate(1.45px, 3.5px) rotate(45deg); } 30%, 66% { transform: none; } 80%, 100% { transform: translate(1.45px, 3.5px) rotate(45deg); } }
+    @keyframes tgp4 { 0%, 16% { transform: translate(-8.45px, -3.5px) rotate(135deg); } 30%, 66% { transform: none; } 80%, 100% { transform: translate(-8.45px, -3.5px) rotate(135deg); } }
     /* ===== staggered section entrance ===== */
     .reveal .section-header, .reveal .cycle-rail, .reveal .icp-list, .reveal .feed-panel { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in .section-header { opacity: 1; transform: none; transition-delay: .14s; }
     .reveal.in .cycle-rail, .reveal.in .icp-list, .reveal.in .feed-panel { opacity: 1; transform: none; transition-delay: .3s; }
     @media (prefers-reduced-motion: reduce) {
-      .sec-label .p, .reveal .section-header, .reveal .cycle-rail, .reveal .icp-list, .reveal .feed-panel { transition: none !important; transform: none !important; opacity: 1 !important; }
+      .sec-label .p, .reveal .section-header, .reveal .cycle-rail, .reveal .icp-list, .reveal .feed-panel { transition: none !important; animation: none !important; transform: none !important; opacity: 1 !important; }
     }
     /* ===== mobile type scale (desktop untouched) ===== */
     @media (max-width: 600px) {
-      html { scroll-padding-top: 4.2rem; }
       .section-title { font-size: 1.66rem; }
       .section-desc { font-size: 1.02rem; line-height: 1.55; }
       .hero-title { font-size: 2rem; }
@@ -328,6 +325,7 @@
       .cycle-rail, .icp-list, .feed-panel { margin-top: 1.6rem; }
       .icp-item { padding: 1.35rem 0; }
       .cycle-rail { gap: 1.9rem; }
+      section { scroll-margin-top: 4rem; }
     }
   </style>
 </head>
