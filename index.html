@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM</title>
+  <!-- build: arrow-v2 -->
   <meta name="description" content="Boutique de estruturação em FIDC, crédito distressed e DCM advisory. Do blueprint ao enforcement: a mesma régua atravessa o ciclo do ativo — da estruturação à realização.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -279,13 +280,16 @@
 
     /* ===== tangram label bar ===== */
     .sec-label svg.lbl-tg { display: block; flex-shrink: 0; overflow: visible; }
-    .sec-label .p { fill: var(--cyan); transform-box: fill-box; transform-origin: center; transition: transform .65s cubic-bezier(.22,.8,.26,1), opacity .45s ease; }
-    .reveal .sec-label .p1 { transform: translateX(-9px) rotate(-50deg); opacity: 0; }
-    .reveal .sec-label .p2 { transform: rotate(135deg) scale(.4); opacity: 0; }
-    .reveal .sec-label .p3 { transform: translateX(9px) rotate(50deg); opacity: 0; }
-    .reveal.in .sec-label .p1, .reveal.in .sec-label .p2, .reveal.in .sec-label .p3 { transform: none; opacity: 1; }
-    .reveal.in .sec-label .p2 { transition-delay: .12s; }
-    .reveal.in .sec-label .p3 { transition-delay: .22s; }
+    .sec-label .p { fill: var(--cyan); transform-box: fill-box; transform-origin: center; transition: transform .85s cubic-bezier(.22,.8,.26,1); }
+    .reveal .sec-label .p1 { transform: translate(3.5px, -4.95px) rotate(-135deg); }
+    .reveal .sec-label .p2 { transform: translate(3.5px, 4.95px) rotate(-135deg); }
+    .reveal .sec-label .p3 { transform: translate(1.45px, 3.5px) rotate(45deg); }
+    .reveal .sec-label .p4 { transform: translate(-8.45px, -3.5px) rotate(135deg); }
+    .reveal.in .sec-label .p1, .reveal.in .sec-label .p2, .reveal.in .sec-label .p3, .reveal.in .sec-label .p4 { transform: none; }
+    .reveal.in .sec-label .p1 { transition-delay: .45s; }
+    .reveal.in .sec-label .p2 { transition-delay: .55s; }
+    .reveal.in .sec-label .p3 { transition-delay: .65s; }
+    .reveal.in .sec-label .p4 { transition-delay: .75s; }
     /* ===== staggered section entrance ===== */
     .reveal .section-header, .reveal .cycle-rail, .reveal .icp-list, .reveal .feed-panel { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in .section-header { opacity: 1; transform: none; transition-delay: .14s; }
@@ -309,6 +313,21 @@
       .contato-desc { font-size: 0.97rem; }
       .sec-label { margin-bottom: 1.6rem; }
       .section-header { margin-bottom: 1.9rem; gap: 1.2rem; }
+    }
+
+    /* ===== mobile rhythm ===== */
+    @media (max-width: 940px) {
+      .section { padding: 3.4rem 2rem; }
+      .sec-label { margin-bottom: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 2.2rem 1.25rem; }
+      .sec-label { margin-bottom: 1.1rem; }
+      .section-header { margin-bottom: 1.3rem; gap: 0.85rem; }
+      .section-title { margin-bottom: 0; }
+      .cycle-rail, .icp-list, .feed-panel { margin-top: 1.6rem; }
+      .icp-item { padding: 1.35rem 0; }
+      .cycle-rail { gap: 1.9rem; }
     }
   </style>
 </head>
@@ -379,7 +398,7 @@
   <!-- ATUAÇÃO · O CICLO -->
   <section id="atuacao" class="section dark">
     <div class="section-in reveal">
-      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 38 14" width="38" height="14" aria-hidden="true"><polygon class="p p1" points="0,1 12,7 0,13"/><polygon class="p p2" points="15,7 21,1 27,7 21,13"/><polygon class="p p3" points="30,2.5 38,7 30,11.5"/></svg>Atuação</div>
+      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 14 14" width="17" height="17" aria-hidden="true"><polygon class="p p1" points="0,3.5 7,3.5 0,10.5"/><polygon class="p p2" points="7,3.5 7,10.5 0,10.5"/><polygon class="p p3" points="7,0 14,7 7,7"/><polygon class="p p4" points="7,7 14,7 7,14"/></svg>Atuação</div>
       <div class="section-header">
         <h2 class="section-title">O ciclo do ativo<br><em>de crédito.</em></h2>
         <p class="section-desc">A tese é de crédito. Estruturação de FIDC, DCM advisory e enforcement operam como etapas do mesmo mandato, da originação da carteira à realização em caixa.</p>
@@ -412,7 +431,7 @@
   <!-- PARA QUEM -->
   <section id="para-quem" class="section">
     <div class="section-in reveal">
-      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 38 14" width="38" height="14" aria-hidden="true"><polygon class="p p1" points="0,1 12,7 0,13"/><polygon class="p p2" points="15,7 21,1 27,7 21,13"/><polygon class="p p3" points="30,2.5 38,7 30,11.5"/></svg>Para quem</div>
+      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 14 14" width="17" height="17" aria-hidden="true"><polygon class="p p1" points="0,3.5 7,3.5 0,10.5"/><polygon class="p p2" points="7,3.5 7,10.5 0,10.5"/><polygon class="p p3" points="7,0 14,7 7,7"/><polygon class="p p4" points="7,7 14,7 7,14"/></svg>Para quem</div>
       <div class="section-header">
         <h2 class="section-title">Mandatos concentrados<br><em>em quatro perfis.</em></h2>
         <p class="section-desc">O recorte vem da prática, dentro e fora do buy side, nos mandatos que percorreram esse ciclo nos últimos anos.</p>
@@ -441,7 +460,7 @@
   <!-- INSIGHTS -->
   <section id="insights" class="section">
     <div class="section-in reveal">
-      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 38 14" width="38" height="14" aria-hidden="true"><polygon class="p p1" points="0,1 12,7 0,13"/><polygon class="p p2" points="15,7 21,1 27,7 21,13"/><polygon class="p p3" points="30,2.5 38,7 30,11.5"/></svg>Insights</div>
+      <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 14 14" width="17" height="17" aria-hidden="true"><polygon class="p p1" points="0,3.5 7,3.5 0,10.5"/><polygon class="p p2" points="7,3.5 7,10.5 0,10.5"/><polygon class="p p3" points="7,0 14,7 7,7"/><polygon class="p p4" points="7,7 14,7 7,14"/></svg>Insights</div>
       <div class="section-header">
         <h2 class="section-title">Análises<br><em>de mercado.</em></h2>
         <p class="section-desc">Regulação, distressed e a fronteira tributária do crédito estruturado. Produção contínua do escritório, em rotação abaixo.</p>
@@ -465,7 +484,7 @@
   <section id="contato">
     <div class="contato-top">
       <div class="contato-top-in">
-        <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 38 14" width="38" height="14" aria-hidden="true"><polygon class="p p1" points="0,1 12,7 0,13"/><polygon class="p p2" points="15,7 21,1 27,7 21,13"/><polygon class="p p3" points="30,2.5 38,7 30,11.5"/></svg>Contato</div>
+        <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 14 14" width="17" height="17" aria-hidden="true"><polygon class="p p1" points="0,3.5 7,3.5 0,10.5"/><polygon class="p p2" points="7,3.5 7,10.5 0,10.5"/><polygon class="p p3" points="7,0 14,7 7,7"/><polygon class="p p4" points="7,7 14,7 7,14"/></svg>Contato</div>
         <h2 class="contato-title">Conversas técnicas,<br><em>sob agendamento.</em></h2>
         <p class="contato-desc">Mandatos novos entram por contato direto: e-mail técnico, agenda mediada ou indicação. Resposta em até 24 horas úteis.</p>
       </div>
