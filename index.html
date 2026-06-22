@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RMIRA ADV — Boutique de estruturação em FIDC, distressed e DCM</title>
-  <!-- build: magnet-v8 -->
-  <meta name="description" content="Boutique de estruturação em FIDC, crédito distressed e DCM advisory. Do blueprint ao enforcement: a mesma régua atravessa o ciclo do ativo — da estruturação à realização.">
+  <title>RMIRA ADV — Crédito estruturado, recuperação de ativos e eficiência tributária</title>
+  <!-- build: petroleo-v1 -->
+  <meta name="description" content="Crédito estruturado, recuperação de ativos e eficiência tributária. Estruturação de operações de crédito, recuperação de carteiras inadimplentes e teses de eficiência tributária, sob a régua do investidor sênior.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,7 +19,9 @@
     :root {
       --bg:        #fcfcfa;                 /* branco-galeria */
       --surface:   #ffffff;
-      --navy:      #0d2a4a;                 /* tinta + fundos escuros (par do filtro do logo) */
+      --navy:      #0b2230;                 /* petróleo — fundos escuros (par do filtro do logo) */
+      --brass:     #b89150;                 /* acento quente — fios e ênfase */
+      --brass-dim: rgba(184,145,80,0.5);    /* construção / hairline */
       --ink:       #0d2a4a;
       --body:      #36465a;
       --muted:     #71808f;
@@ -84,27 +86,27 @@
     section { scroll-margin-top: 57px; }
 
     /* ════════ HERO ════════ */
-    #posicionamento { }
+    #posicionamento { background: var(--navy); }
     .hero-grid {
       display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 3rem;
-      align-items: center; padding: 4.5rem 2.5rem 3.5rem;
+      align-items: center; padding: 5.5rem 2.5rem 5rem;
       max-width: 1280px; margin: 0 auto;
     }
-    .hero-kicker { display: flex; align-items: center; gap: 0.75rem; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; color: var(--cyan-ink); text-transform: uppercase; margin-bottom: 1.5rem; }
-    .hero-kicker::before { content: ''; display: block; width: 2.25rem; height: 2px; background: var(--cyan); }
-    .hero-title { font-size: clamp(2.5rem, 5.6vw, 4.1rem); font-weight: 400; line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 1.75rem; }
+    .hero-kicker { display: flex; align-items: center; gap: 0.75rem; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; color: #79c5f0; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .hero-kicker::before { content: ''; display: block; width: 2.25rem; height: 2px; background: var(--brass); }
+    .hero-title { font-size: clamp(2.5rem, 5.6vw, 4.1rem); font-weight: 400; line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 1.75rem; color: #f5f8fb; }
     .hero-title em { font-weight: 400; }
-    .hero-title .hl { text-decoration: underline; text-decoration-color: var(--cyan); text-decoration-thickness: 3px; text-underline-offset: 0.16em; }
-    .hero-sub { font-size: 1rem; line-height: 1.72; color: var(--body); max-width: 56ch; margin-bottom: 1.75rem; }
-    .hero-promise { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.45; color: var(--ink); max-width: 44ch; padding-left: 1.25rem; border-left: 2px solid var(--cyan); }
+    .hero-title .hl { text-decoration: underline; text-decoration-color: var(--brass); text-decoration-thickness: 3px; text-underline-offset: 0.16em; }
+    .hero-sub { font-size: 1rem; line-height: 1.72; color: #c6d6e4; max-width: 58ch; margin-bottom: 1.85rem; }
+    .hero-promise { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.45; color: #e9f1f8; max-width: 46ch; padding-left: 1.25rem; border-left: 2px solid var(--brass); }
 
     /* Tangram animado: quadrado → vista explodida → símbolo RMIRA */
     .hero-art { display: flex; justify-content: center; align-items: center; }
     .tangram-wrap { position: relative; width: min(100%, 460px); }
     .tangram { width: 100%; height: auto; display: block; }
-    .tangram .blueprint { fill: none; stroke: var(--navy); stroke-width: 0.05; stroke-dasharray: 0.28 0.2; opacity: 0; animation: bp 14s cubic-bezier(.22,.8,.26,1) infinite .15s; }
+    .tangram .blueprint { fill: none; stroke: var(--brass); stroke-width: 0.05; stroke-dasharray: 0.28 0.2; opacity: 0; animation: bp 14s cubic-bezier(.22,.8,.26,1) infinite .15s; }
     .tangram .stage { transform-origin: 4px 4px; animation: stage 14s cubic-bezier(.22,.8,.26,1) infinite .15s; }
-    .tangram .pc { fill: var(--cyan); stroke: var(--bg); stroke-width: 0.12; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; animation: cycle 14s cubic-bezier(.22,.8,.26,1) infinite; }
+    .tangram .pc { fill: #f5f8fb; stroke: var(--navy); stroke-width: 0.12; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; animation: cycle 14s cubic-bezier(.22,.8,.26,1) infinite; }
     .stage .pc:nth-of-type(2) { animation-delay: .05s; }
     .stage .pc:nth-of-type(3) { animation-delay: .1s; }
     .stage .pc:nth-of-type(4) { animation-delay: .15s; }
@@ -128,7 +130,7 @@
       42%, 100% { opacity: 0; }
     }
     /* Lockup — wordmark original em fade sincronizado ao símbolo */
-    .tangram-lockup { position: absolute; left: 50%; top: 82%; width: 96.5%; height: auto; opacity: 0; transform: translateX(-50%) translateY(8px); animation: lockfade 14s cubic-bezier(.22,.8,.26,1) infinite .15s; }
+    .tangram-lockup { position: absolute; left: 50%; top: 82%; width: 96.5%; height: auto; opacity: 0; transform: translateX(-50%) translateY(8px); filter: grayscale(1) invert(1) brightness(1.9) contrast(4); animation: lockfade 14s cubic-bezier(.22,.8,.26,1) infinite .15s; }
     @keyframes lockfade {
       0%, 44%   { opacity: 0; transform: translateX(-50%) translateY(8px); }
       52%, 70%  { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -150,6 +152,7 @@
     .section-desc { font-family: var(--serif); font-size: 1.18rem; font-weight: 300; line-height: 1.5; color: var(--ink); }
 
     .section.dark { background: var(--navy); border-bottom: none; }
+    #atuacao { border-top: 1px solid rgba(184,145,80,0.3); }
     .section.dark .sec-label { color: #79c5f0; }
     .section.dark .section-title { color: #f2f6fa; }
     .section.dark .section-desc { color: #c4d4e3; }
@@ -362,13 +365,13 @@
       <div class="hero-copy">
         <div class="hero-kicker">Do blueprint ao enforcement</div>
         <h1 class="hero-title">
-          Mercado de capitais<br>
-          <em>desenhado por quem</em><br>
-          <em><span class="hl">também opera.</span></em>
+          Crédito estruturado,<br>
+          <span class="hl">recuperação de ativos</span><br>
+          e eficiência tributária.
         </h1>
         <p class="hero-sub">
-          Boutique de estruturação em FIDC, crédito distressed e DCM advisory.
-          Cada mandato é desenhado por advogado-operador: quem assina o documento
+          Estruturação de operações de crédito, recuperação de carteiras inadimplentes
+          e teses de eficiência tributária. Quem assina o documento
           conhece a tese de investimento, a régua do investidor sênior e o atrito
           regulatório antes de o cedente sentar à mesa.
         </p>
@@ -401,7 +404,7 @@
       <div class="sec-label"><svg class="lbl-tg" viewBox="0 0 14 14" width="17" height="17" aria-hidden="true"><polygon class="p p1" points="0,3.5 7,3.5 0,10.5"/><polygon class="p p2" points="7,3.5 7,10.5 0,10.5"/><polygon class="p p3" points="7,0 14,7 7,7"/><polygon class="p p4" points="7,7 14,7 7,14"/></svg>Atuação</div>
       <div class="section-header">
         <h2 class="section-title">O ciclo do ativo<br><em>de crédito.</em></h2>
-        <p class="section-desc">A tese é de crédito. Estruturação de FIDC, DCM advisory e enforcement operam como etapas do mesmo mandato, da originação da carteira à realização em caixa.</p>
+        <p class="section-desc">A tese é de crédito. Estruturação, recuperação de ativos e eficiência tributária operam como etapas do mesmo mandato, da originação da carteira à realização em caixa.</p>
       </div>
       <div class="cycle-rail">
         <div class="cycle-step">
@@ -422,7 +425,7 @@
         <div class="cycle-step">
           <div class="cycle-num">04</div>
           <h3 class="cycle-title">Realização</h3>
-          <p>O ciclo segue depois do closing. Tese de retomada por cluster de ativo, enforcement de garantias sob a Lei 14.112/2020 e recuperação medida no caixa do veículo.</p>
+          <p>O ciclo segue depois do closing. Tese de retomada por cluster de ativo, enforcement de garantias sob a Lei 14.112/2020 e a eficiência tributária da recuperação, medida no caixa do veículo.</p>
         </div>
       </div>
     </div>
