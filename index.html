@@ -339,6 +339,146 @@
       section { scroll-margin-top: 53px; }
       .contato-footer { margin-top: auto; }
     }
+  
+
+    /* ══════════════════════════════════════════════════════════════════
+       BARRA DE NAVEGAÇÃO — petróleo, não papel.
+       A barra clara criava uma faixa dura sobre o hero navy e deixava o
+       logo ciano com pouco contraste. Em petróleo ela se funde à abertura,
+       o logo volta ao fundo para o qual foi desenhado, e o menu mobile
+       (que já é escuro) passa a ser coerente com a barra.
+       ══════════════════════════════════════════════════════════════════ */
+
+    nav {
+      background: rgba(11,34,48,0.90);
+      border-bottom: 1px solid rgba(184,145,80,0.28);
+      overflow: hidden;
+    }
+    nav > * { position: relative; z-index: 1; }
+    nav::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(121,197,240,0.07) 0 1px, transparent 1px 56px),
+        repeating-linear-gradient(-45deg, rgba(121,197,240,0.05) 0 1px, transparent 1px 56px);
+      mask-image: linear-gradient(to left, #000 0%, transparent 62%);
+      -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 62%);
+    }
+    .nav-links a { color: #b9cbd9; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a.li { color: #79c5f0; }
+    .nav-ham span { background: #dbe6ee; }
+
+    /* Variante opcional — barra transparente sobre o hero, petróleo ao rolar.
+       Descomente e acrescente o listener indicado ao final do arquivo.
+    nav { background: transparent; border-bottom-color: transparent;
+           transition: background .3s ease, border-color .3s ease; }
+    nav.solid { background: rgba(11,34,48,0.92);
+                 border-bottom-color: rgba(184,145,80,0.28); }
+    */
+    /* ══════════════════════════════════════════════════════════════════
+       TANGRAM DE FUNDO — camada puramente decorativa.
+       Três registros, do mais forte ao mais discreto:
+         (a) campo facetado  → superfícies navy
+         (b) fantasma de traço → superfícies claras (registro blueprint)
+         (c) malha de fios    → todas, unifica o conjunto
+       Nenhuma cor fora dos tokens. Nenhuma alteração de copy ou ordem.
+       ══════════════════════════════════════════════════════════════════ */
+
+    #posicionamento, #atuacao, #para-quem, #quem-assina, #contato {
+      position: relative; overflow: hidden;   /* contém a sangria das figuras */
+    }
+    #posicionamento > *, #atuacao > *, #para-quem > *, #quem-assina > *, #contato > * {
+      position: relative; z-index: 1;
+    }
+    .tg-bg::before, .tg-bg::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 0; pointer-events: none; background-repeat: no-repeat;
+    }
+
+    /* ── malha de fios: o denominador comum de todas as seções ── */
+    #posicionamento::before, #atuacao::before, #contato::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(121,197,240,0.055) 0 1px, transparent 1px 104px),
+        repeating-linear-gradient(-45deg, rgba(121,197,240,0.042) 0 1px, transparent 1px 104px),
+        repeating-linear-gradient(90deg,  rgba(255,255,255,0.028) 0 1px, transparent 1px 104px);
+      mask-image: linear-gradient(105deg, transparent 0%, rgba(0,0,0,0.55) 42%, #000 100%);
+      -webkit-mask-image: linear-gradient(105deg, transparent 0%, rgba(0,0,0,0.55) 42%, #000 100%);
+    }
+    #para-quem::before, #quem-assina::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(13,42,74,0.055) 0 1px, transparent 1px 88px),
+        repeating-linear-gradient(-45deg, rgba(13,42,74,0.040) 0 1px, transparent 1px 88px);
+      mask-image: linear-gradient(255deg, transparent 6%, rgba(0,0,0,0.5) 46%, #000 100%);
+      -webkit-mask-image: linear-gradient(255deg, transparent 6%, rgba(0,0,0,0.5) 46%, #000 100%);
+    }
+
+    /* ── figura de fundo, uma por seção, sempre sangrando pela borda ── */
+    #posicionamento::after, #atuacao::after, #para-quem::after,
+    #quem-assina::after, #contato::after {
+      content: ''; position: absolute; z-index: 0; pointer-events: none;
+      background-repeat: no-repeat; background-size: contain;
+    }
+
+    /* Hero — o tangram animado é a figura; o fundo só ecoa, à esquerda,
+       para não disputar com a animação à direita. */
+    #posicionamento::after {
+      bottom: -14%; left: -9%; width: 430px; height: 430px;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%20fill%3D%22%230f3348%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%20fill%3D%22%23123a52%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%20fill%3D%22%230d2c40%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%20fill%3D%22%2314425e%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%20fill%3D%22%230c2939%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%20fill%3D%22%23113448%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%20fill%3D%22%230e3045%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231b5378%22%20stroke-width%3D%220.022%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%228%22%20height%3D%228%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); opacity: 0.30;
+      transform: rotate(-15deg);
+      mask-image: linear-gradient(to right, #000 28%, transparent 96%);
+      -webkit-mask-image: linear-gradient(to right, #000 28%, transparent 96%);
+    }
+
+    /* Atuação — campo facetado ancorado à direita, atrás da trilha do ciclo. */
+    #atuacao::after {
+      top: -12%; right: -8%; width: 520px; height: 520px;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%20fill%3D%22%230f3348%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%20fill%3D%22%23123a52%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%20fill%3D%22%230d2c40%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%20fill%3D%22%2314425e%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%20fill%3D%22%230c2939%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%20fill%3D%22%23113448%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%20fill%3D%22%230e3045%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231b5378%22%20stroke-width%3D%220.022%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%228%22%20height%3D%228%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); opacity: 0.34;
+      transform: rotate(9deg);
+      mask-image: linear-gradient(to left, #000 28%, transparent 96%);
+      -webkit-mask-image: linear-gradient(to left, #000 28%, transparent 96%);
+    }
+
+    /* Para quem — registro blueprint: só traço, dourado, tracejado,
+       o mesmo vocabulário da construção que aparece na animação do hero. */
+    #para-quem::after {
+      top: -6%; right: -10%; width: 560px; height: 560px;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23b89150%22%20stroke-width%3D%220.046%22%20stroke-linejoin%3D%22round%22%20stroke-dasharray%3D%220.26%200.18%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%228%22%20height%3D%228%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); opacity: 0.46;
+      mask-image: linear-gradient(to left, #000 26%, transparent 94%);
+      -webkit-mask-image: linear-gradient(to left, #000 26%, transparent 94%);
+    }
+
+    /* Quem assina — mesmo registro, espelhado e em tinta, para não repetir. */
+    #quem-assina::after {
+      bottom: -18%; left: -8%; width: 470px; height: 470px;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%230d2a4a%22%20stroke-width%3D%220.04%22%20stroke-linejoin%3D%22round%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%228%22%20height%3D%228%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); opacity: 0.26;
+      transform: rotate(-8deg);
+      mask-image: linear-gradient(to right, #000 26%, transparent 94%);
+      -webkit-mask-image: linear-gradient(to right, #000 26%, transparent 94%);
+    }
+
+    /* Contato — fecha o ciclo com o mesmo campo da abertura, no canto oposto. */
+    #contato::after {
+      right: -7%; bottom: -10%; width: 480px; height: 480px;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%20fill%3D%22%230f3348%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%20fill%3D%22%23123a52%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%20fill%3D%22%230d2c40%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%20fill%3D%22%2314425e%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%20fill%3D%22%230c2939%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%20fill%3D%22%23113448%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%20fill%3D%22%230e3045%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231b5378%22%20stroke-width%3D%220.022%22%3E%3Cpolygon%20points%3D%220%2C0%208%2C0%204%2C4%22%2F%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%200%2C8%22%2F%3E%3Cpolygon%20points%3D%228%2C0%208%2C4%206%2C2%22%2F%3E%3Cpolygon%20points%3D%226%2C2%208%2C4%206%2C6%204%2C4%22%2F%3E%3Cpolygon%20points%3D%228%2C4%208%2C8%204%2C8%22%2F%3E%3Cpolygon%20points%3D%222%2C6%204%2C4%206%2C6%22%2F%3E%3Cpolygon%20points%3D%220%2C8%202%2C6%206%2C6%204%2C8%22%2F%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%228%22%20height%3D%228%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); opacity: 0.30;
+      transform: rotate(-6deg);
+      mask-image: linear-gradient(to left, #000 30%, transparent 96%);
+      -webkit-mask-image: linear-gradient(to left, #000 30%, transparent 96%);
+    }
+
+    @media (max-width: 900px) {
+      #posicionamento::after, #atuacao::after, #para-quem::after,
+      #quem-assina::after, #contato::after { width: 280px; height: 280px; opacity: 0.20; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #posicionamento::after, #atuacao::after, #para-quem::after,
+      #quem-assina::after, #contato::after { transform: none; }
+    }
+
   </style>
 </head>
 <body>
