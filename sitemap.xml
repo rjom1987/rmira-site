@@ -2,7 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rmira.com.br/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/rennan-mira/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/cessao-de-creditos-recuperanda-rcvm-240/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/duplicata-escritural-tokenizacao-rwa/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/duplicata-escritural-verificacao-de-lastro/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/rcvm-175-um-ano-depois/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/fidc-energia-lastro-cceal/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/fidc-energia-recebivel-da-distribuidora/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/artigos/fidc-energia-curtailment-ressarcimento/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
   </url>
 </urlset>
