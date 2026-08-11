@@ -89,10 +89,11 @@
     /* ── Nav ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(252,252,250,0.92); backdrop-filter: saturate(150%) blur(10px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(11,34,48,0.90); backdrop-filter: saturate(150%) blur(10px);
+      border-bottom: 1px solid rgba(184,145,80,0.28);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2.5rem; height: 56px;
+      overflow: hidden;
     }
     .nav-brand { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; letter-spacing: 0.01em; color: var(--cyan); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.6rem; }
     .nav-logo { height: 26px; width: auto; display: block; }
@@ -107,7 +108,6 @@
     .nav-ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-ham.open span:nth-child(2) { opacity: 0; }
     .nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    nav { z-index: 100; }
     .nav-mobile { position: fixed; inset: 0; background: var(--navy); z-index: 99; display: flex; flex-direction: column; justify-content: center; padding: 0 2.25rem; opacity: 0; pointer-events: none; transition: opacity 0.32s ease; }
     .nav-mobile a { display: block; font-family: var(--serif); font-size: 1.55rem; font-weight: 500; color: #f2f6fa; text-decoration: none; padding: 0.95rem 0; border-bottom: 1px solid rgba(255,255,255,0.09); opacity: 0; transform: translateY(10px); transition: opacity 0.35s ease, transform 0.35s ease; }
     .nav-mobile.open { opacity: 1; pointer-events: auto; }
@@ -203,11 +203,6 @@
     #quem-assina.section { padding-bottom: 9rem; }
     #quem-assina .qa-bio p { line-height: 1.85; }
 
-    /* ── Selo de 1px entre seções: evita a linha clara do fundo do body
-       aparecer no limite entre uma seção escura e a seguinte, por
-       arredondamento de subpixel durante o scroll/composição. ── */
-    #para-quem, #contato { margin-top: -1px; }
-
     /* ── Contato ── */
     #contato { display: flex; flex-direction: column; background: var(--navy); color: #c8d8e8; }
     #contato .sec-label { color: #79c5f0; }
@@ -285,7 +280,7 @@
     .cycle-step p { font-size: 0.875rem; line-height: 1.7; color: rgba(242,246,250,0.78); margin: 0; }
     .section.dark .section-desc { color: rgba(242,246,250,0.85); }
     .deepen { margin-top: 3.25rem; padding-top: 2rem; border-top: 1px solid var(--brass-dim); max-width: 100%; }
-    .deepen-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #79c5f0; margin-bottom: 1.1rem; }
+    .deepen-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass); margin-bottom: 1.1rem; }
     .deepen-links { display: flex; flex-wrap: wrap; gap: 0.6rem 2.25rem; max-width: 100%; }
     .deepen-links a { font-family: var(--serif); font-size: 1rem; color: #f2f6fa; text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 3px; line-height: 1.4; }
     .deepen-links a:hover { color: #79c5f0; border-bottom-color: #79c5f0; }
@@ -386,11 +381,6 @@
        (que já é escuro) passa a ser coerente com a barra.
        ══════════════════════════════════════════════════════════════════ */
 
-    nav {
-      background: rgba(11,34,48,0.90);
-      border-bottom: 1px solid rgba(184,145,80,0.28);
-      overflow: hidden;
-    }
     nav > * { position: relative; z-index: 1; }
     nav::before {
       content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
