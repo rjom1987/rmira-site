@@ -308,6 +308,12 @@
     .qa-bio p { margin: 0 0 1rem; font-size: 0.95rem; line-height: 1.75; color: var(--ink); opacity: 0.92; }
     .qa-link { display: inline-block; margin-top: 0.4rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 2px; }
     .qa-link:hover { color: var(--cyan-ink); border-bottom-color: var(--cyan-ink); }
+    .qa-portrait { position: relative; width: 100%; }
+    .qa-portrait-guard { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; }
+    .qa-portrait-guard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.86) contrast(1.02); -webkit-user-select: none; user-select: none; pointer-events: none; }
+    .qa-shield { position: absolute; inset: 0; background: transparent; z-index: 3; }
+    .qa-portrait::before { content: ""; position: absolute; left: -11px; top: -11px; width: 88px; height: 88px; border-top: 1px solid var(--brass); border-left: 1px solid var(--brass); }
+    .qa-portrait::after { content: ""; position: absolute; right: -11px; bottom: -11px; width: 88px; height: 88px; border-bottom: 1px solid var(--brass-dim); border-right: 1px solid var(--brass-dim); }
     @media (prefers-reduced-motion: reduce) {
       .cycle-step::before, .cycle-title { animation: none; }
     }
@@ -320,6 +326,7 @@
     }
     @media (max-width: 600px) {
       .qa-wrap { grid-template-columns: 1fr; gap: 1.4rem; padding-top: 1.8rem; }
+      .qa-portrait { max-width: 220px; }
     }
 
     /* ===== tangram label bar ===== */
@@ -664,11 +671,15 @@
         <p class="section-desc">Mandato concentrado em um único responsável: quem desenha a operação é quem responde por ela.</p>
       </div>
       <div class="qa-wrap">
-        <div class="qa-id">
-          <p class="qa-name">Rennan Mira</p>
-          <div class="qa-role">Advogado &middot; Mercado de Capitais</div>
+        <div class="qa-portrait">
+          <div class="qa-portrait-guard">
+            <img src="/rennan-mira.jpg" alt="Rennan Mira" draggable="false">
+            <div class="qa-shield" oncontextmenu="return false" ondragstart="return false"></div>
+          </div>
         </div>
         <div class="qa-bio">
+          <h3 class="qa-name">Rennan Mira</h3>
+          <div class="qa-role">Advogado &middot; Mercado de Capitais</div>
           <p>Atuação na interseção entre direito e crédito, dentro e fora do buy side — da tese de investimento ao enforcement da garantia. A RMIRA é a formalização dessa prática: mandatos concentrados e execução direta, sem camadas de intermediação.</p>
           <p>As análises do escritório sobre regulação, FIDC e crédito estruturado são publicadas em veículos jurídicos e no LinkedIn.</p>
           <a class="qa-link" href="https://www.linkedin.com/in/rennanmira/" target="_blank" rel="noopener">Perfil e análises no LinkedIn&nbsp;&#8599;</a>
