@@ -237,7 +237,7 @@
     }
 
     /* ── Contato / rodapé (reused from index.html) ── */
-    #contato { display: flex; flex-direction: column; background: var(--navy); color: #c8d8e8; margin-top: -1px; }
+    #contato { display: flex; flex-direction: column; background: var(--navy); color: #c8d8e8; }
     .contato-top { padding: 3.25rem 2.5rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .contato-top-in, .contato-body-in, .contato-footer-in { max-width: 1280px; margin: 0 auto; width: 100%; }
     .contato-title { font-family: var(--serif); font-size: clamp(1.9rem, 3.4vw, 2.8rem); font-weight: 400; color: #f2f6fa; line-height: 1.1; margin-bottom: 1rem; }
@@ -313,6 +313,32 @@
     .article-list h2 a:hover { color: var(--cyan-ink); }
     .article-list .item-meta { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; margin-bottom: 0.5rem; text-transform: uppercase; }
     .article-list .item-desc { font-size: 0.875rem; color: var(--body); }
+
+    /* ── Carrossel de artigos (artigos/) ── */
+    .carousel-section { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem 1rem; }
+    .carousel-viewport {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    }
+    .carousel-track { display: flex; gap: 1.5rem; width: max-content; list-style: none; animation: carousel-scroll 50s linear infinite; }
+    .carousel-viewport:hover .carousel-track,
+    .carousel-viewport:focus-within .carousel-track { animation-play-state: paused; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .carousel-card { flex: 0 0 auto; width: 300px; padding: 1.6rem 1.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; }
+    .carousel-meta { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass); margin-bottom: 0.85rem; }
+    .carousel-card h2 { font-size: 1.05rem; line-height: 1.32; margin-bottom: 0.65rem; }
+    .carousel-card h2 a { color: var(--ink); text-decoration: none; }
+    .carousel-card h2 a:hover { color: var(--cyan-ink); }
+    .carousel-card .item-desc { font-size: 0.82rem; line-height: 1.62; color: var(--body); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (max-width: 600px) { .carousel-card { width: 250px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-card--dup { display: none; }
+      .carousel-track { animation: none; }
+      .carousel-viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+      .carousel-card { scroll-snap-align: start; }
+      .carousel-viewport { scroll-snap-type: x proximity; }
+    }
     .bio-block { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--line); }
     .bio-block p { font-size: 0.9375rem; line-height: 1.75; margin-bottom: 1.1rem; }
     .bio-contact { font-size: 0.8125rem; color: var(--muted); }
@@ -349,44 +375,83 @@
       <h1 class="page-title">Artigos</h1>
       <p class="list-desc">Análises técnicas sobre mercado de capitais, crédito estruturado, FIDC, securitização e recuperação de ativos.</p>
     </div>
-    <ul class="article-list">
-        <li>
-          <div class="item-meta">FIDC e energia &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/fidc-energia-lastro-cceal/">O lastro que ainda não foi gerado: CCEAL, verificação e o Anexo II</a></h2>
-          <p class="item-desc">Contratos de comercialização de energia no ambiente livre vêm sendo usados como lastro de FIDC. O ponto sensível está no art. 36 do Anexo Normativo II, e não na lista de direitos creditórios não-padronizados.</p>
-        </li>
-        <li>
-          <div class="item-meta">FIDC e energia &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/fidc-energia-recebivel-da-distribuidora/">A fatura de energia não circula como duplicata — e isso decide a estrutura</a></h2>
-          <p class="item-desc">O recebível da distribuidora não tem instrumento cambial, não entra nas registradoras de recebíveis e depende do art. 290 do Código Civil em escala de milhões. O que isso impõe a quem estrutura FIDC no setor elétrico.</p>
-        </li>
-        <li>
-          <div class="item-meta">FIDC e energia &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/fidc-energia-curtailment-ressarcimento/">O ressarcimento do curtailment virou recebível. Falta decidir de que tipo.</a></h2>
-          <p class="item-desc">A Portaria Normativa MME nº 140 abriu o caminho para compensar geradores eólicos e solares por cortes de geração. O crédito que nasce daí tem enquadramento incerto no Anexo Normativo II e afeta carteiras de FIDC já constituídas.</p>
-        </li>
-        <li>
-          <div class="item-meta">Recuperação Judicial &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/">Cessão de créditos por empresa em recuperação: o roteiro jurídico após a Resolução CVM 240</a></h2>
-          <p class="item-desc">A norma destravou a aquisição por FIDC de créditos cedidos por recuperandas. O roteiro em quatro planos: concursal, contratual, de precificação e de governança do fundo comprador.</p>
-        </li>
-        <li>
-          <div class="item-meta">Duplicata Escritural &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/duplicata-escritural-tokenizacao-rwa/">Duplicata escritural, tokenização e a hierarquia das fontes de verdade do crédito</a></h2>
-          <p class="item-desc">Quando o token e o registro divergem, qual dos dois diz a verdade. A gramática contratual que subordina a representação em blockchain ao assento registral da duplicata escritural.</p>
-        </li>
-        <li>
-          <div class="item-meta">Duplicata Escritural &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/duplicata-escritural-verificacao-de-lastro/">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></h2>
-          <p class="item-desc">O registro escritural resolve a camada de titularidade e circulação do título, e deixa intacta a camada de veracidade comercial. O efeito prático sobre o dever de verificação de lastro do gestor de FIDC.</p>
-        </li>
-        <li>
-          <div class="item-meta">Fundos de Investimento &middot; 10 de agosto de 2026</div>
-          <h2><a href="/artigos/rcvm-175-um-ano-depois/">A Resolução CVM 175, um ano depois</a></h2>
-          <p class="item-desc">Três quartos da indústria se adaptaram à norma e mais de nove em cada dez fundos adaptados seguem monoclasse. O que a baixa adesão às inovações revela sobre desenho regulatório e segurança jurídica.</p>
-        </li>
-    </ul>
   </main>
+    <section class="carousel-section" aria-label="Lista de artigos">
+      <div class="carousel-viewport">
+        <ul class="carousel-track">
+          <li class="carousel-card">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-lastro-cceal/">O lastro que ainda não foi gerado: CCEAL, verificação e o Anexo II</a></h2>
+            <p class="item-desc">Contratos de comercialização de energia no ambiente livre vêm sendo usados como lastro de FIDC. O ponto sensível está no art. 36 do Anexo Normativo II, e não na lista de direitos creditórios não-padronizados.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-recebivel-da-distribuidora/">A fatura de energia não circula como duplicata — e isso decide a estrutura</a></h2>
+            <p class="item-desc">O recebível da distribuidora não tem instrumento cambial, não entra nas registradoras de recebíveis e depende do art. 290 do Código Civil em escala de milhões. O que isso impõe a quem estrutura FIDC no setor elétrico.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-curtailment-ressarcimento/">O ressarcimento do curtailment virou recebível. Falta decidir de que tipo.</a></h2>
+            <p class="item-desc">A Portaria Normativa MME nº 140 abriu o caminho para compensar geradores eólicos e solares por cortes de geração. O crédito que nasce daí tem enquadramento incerto no Anexo Normativo II e afeta carteiras de FIDC já constituídas.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">Recuperação Judicial &middot; agosto de 2026</div>
+            <h2><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/">Cessão de créditos por empresa em recuperação: o roteiro jurídico após a Resolução CVM 240</a></h2>
+            <p class="item-desc">A norma destravou a aquisição por FIDC de créditos cedidos por recuperandas. O roteiro em quatro planos: concursal, contratual, de precificação e de governança do fundo comprador.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+            <h2><a href="/artigos/duplicata-escritural-tokenizacao-rwa/">Duplicata escritural, tokenização e a hierarquia das fontes de verdade do crédito</a></h2>
+            <p class="item-desc">Quando o token e o registro divergem, qual dos dois diz a verdade. A gramática contratual que subordina a representação em blockchain ao assento registral da duplicata escritural.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+            <h2><a href="/artigos/duplicata-escritural-verificacao-de-lastro/">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></h2>
+            <p class="item-desc">O registro escritural resolve a camada de titularidade e circulação do título, e deixa intacta a camada de veracidade comercial. O efeito prático sobre o dever de verificação de lastro do gestor de FIDC.</p>
+          </li>
+          <li class="carousel-card">
+            <div class="carousel-meta">Fundos de Investimento &middot; agosto de 2026</div>
+            <h2><a href="/artigos/rcvm-175-um-ano-depois/">A Resolução CVM 175, um ano depois</a></h2>
+            <p class="item-desc">Três quartos da indústria se adaptaram à norma e mais de nove em cada dez fundos adaptados seguem monoclasse. O que a baixa adesão às inovações revela sobre desenho regulatório e segurança jurídica.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-lastro-cceal/" tabindex="-1">O lastro que ainda não foi gerado: CCEAL, verificação e o Anexo II</a></h2>
+            <p class="item-desc">Contratos de comercialização de energia no ambiente livre vêm sendo usados como lastro de FIDC. O ponto sensível está no art. 36 do Anexo Normativo II, e não na lista de direitos creditórios não-padronizados.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-recebivel-da-distribuidora/" tabindex="-1">A fatura de energia não circula como duplicata — e isso decide a estrutura</a></h2>
+            <p class="item-desc">O recebível da distribuidora não tem instrumento cambial, não entra nas registradoras de recebíveis e depende do art. 290 do Código Civil em escala de milhões. O que isso impõe a quem estrutura FIDC no setor elétrico.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">FIDC e energia &middot; agosto de 2026</div>
+            <h2><a href="/artigos/fidc-energia-curtailment-ressarcimento/" tabindex="-1">O ressarcimento do curtailment virou recebível. Falta decidir de que tipo.</a></h2>
+            <p class="item-desc">A Portaria Normativa MME nº 140 abriu o caminho para compensar geradores eólicos e solares por cortes de geração. O crédito que nasce daí tem enquadramento incerto no Anexo Normativo II e afeta carteiras de FIDC já constituídas.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">Recuperação Judicial &middot; agosto de 2026</div>
+            <h2><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/" tabindex="-1">Cessão de créditos por empresa em recuperação: o roteiro jurídico após a Resolução CVM 240</a></h2>
+            <p class="item-desc">A norma destravou a aquisição por FIDC de créditos cedidos por recuperandas. O roteiro em quatro planos: concursal, contratual, de precificação e de governança do fundo comprador.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+            <h2><a href="/artigos/duplicata-escritural-tokenizacao-rwa/" tabindex="-1">Duplicata escritural, tokenização e a hierarquia das fontes de verdade do crédito</a></h2>
+            <p class="item-desc">Quando o token e o registro divergem, qual dos dois diz a verdade. A gramática contratual que subordina a representação em blockchain ao assento registral da duplicata escritural.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+            <h2><a href="/artigos/duplicata-escritural-verificacao-de-lastro/" tabindex="-1">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></h2>
+            <p class="item-desc">O registro escritural resolve a camada de titularidade e circulação do título, e deixa intacta a camada de veracidade comercial. O efeito prático sobre o dever de verificação de lastro do gestor de FIDC.</p>
+          </li>
+          <li class="carousel-card carousel-card--dup" aria-hidden="true">
+            <div class="carousel-meta">Fundos de Investimento &middot; agosto de 2026</div>
+            <h2><a href="/artigos/rcvm-175-um-ano-depois/" tabindex="-1">A Resolução CVM 175, um ano depois</a></h2>
+            <p class="item-desc">Três quartos da indústria se adaptaram à norma e mais de nove em cada dez fundos adaptados seguem monoclasse. O que a baixa adesão às inovações revela sobre desenho regulatório e segurança jurídica.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   <section id="contato">
     <div class="contato-top">
       <div class="contato-top-in">
