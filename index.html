@@ -185,7 +185,7 @@
     .section-desc { font-family: var(--serif); font-size: 1.18rem; font-weight: 300; line-height: 1.5; color: var(--ink); }
 
     .section.dark { background: var(--navy); border-bottom: none; }
-    #atuacao { border-top: 1px solid rgba(184,145,80,0.3); padding-bottom: 9rem; }
+    #atuacao { padding-bottom: 4rem; }
     #atuacao .cycle-step p { line-height: 1.85; }
     .section.dark .sec-label { color: #79c5f0; }
     .section.dark .section-title { color: #f2f6fa; }
@@ -290,7 +290,7 @@
     .icp-item h3 { font-family: var(--serif); font-size: 1.16rem; font-weight: 500; color: var(--navy); margin: 0 0 0.65rem; line-height: 1.28; }
     .icp-item p { margin: 0; font-size: 0.85rem; line-height: 1.65; color: var(--ink); opacity: 0.9; }
     /* ===== Quem assina ===== */
-    .qa-wrap { max-width: 900px; margin: 2.75rem auto 0; border-top: 1px solid var(--brass-dim); padding-top: 2.4rem; display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; }
+    .qa-wrap { max-width: 900px; margin: 4.25rem auto 0; border-top: 1px solid var(--brass-dim); padding-top: 2.4rem; display: grid; grid-template-columns: 300px 1fr; gap: 2.5rem; }
     .qa-name { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--navy); line-height: 1.2; margin: 0; }
     .qa-role { margin-top: 0.6rem; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan-ink); }
     .qa-bio p { margin: 0 0 1rem; font-size: 0.95rem; line-height: 1.75; color: var(--ink); opacity: 0.92; }
@@ -724,38 +724,6 @@
   </script>
 <script>
   (function(){var m=document.getElementById('navMobile');if(m){new MutationObserver(function(){document.body.style.overflow=m.classList.contains('open')?'hidden':'';}).observe(m,{attributes:true,attributeFilter:['class']});}})();
-</script>
-<script>
-  (function () {
-    var lock = false, t = null, lastY = window.scrollY, dirDown = true;
-    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function align() {
-      if (window.innerWidth <= 940) return;
-      var mob = window.innerWidth <= 600;
-      var h = mob ? 53 : 57;
-      var zone = mob ? Math.min(window.innerHeight * 0.5, 400) : 160;
-      var best = null, bestD = 1e9;
-      document.querySelectorAll('section[id]').forEach(function (s) {
-        var d = s.getBoundingClientRect().top - h;
-        if (Math.abs(d) < Math.abs(bestD)) { bestD = d; best = s; }
-      });
-      if (!best || Math.abs(bestD) <= 2) return;
-      var act = dirDown ? (bestD > 2 && bestD < zone) : (bestD < -2 && bestD > -zone);
-      if (act) {
-        lock = true;
-        window.scrollBy({ top: bestD, behavior: mq.matches ? 'auto' : 'smooth' });
-        setTimeout(function () { lock = false; }, 700);
-      }
-    }
-    window.addEventListener('scroll', function () {
-      if (lock) return;
-      var y = window.scrollY;
-      if (Math.abs(y - lastY) > 2) dirDown = y > lastY;
-      lastY = y;
-      clearTimeout(t);
-      t = setTimeout(align, 150);
-    }, { passive: true });
-  })();
 </script>
 </body>
 </html>
