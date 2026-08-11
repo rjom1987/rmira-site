@@ -189,22 +189,33 @@
     /* ── Nav (reused from index.html) ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(252,252,250,0.92); backdrop-filter: saturate(150%) blur(10px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(11,34,48,0.90); backdrop-filter: saturate(150%) blur(10px);
+      border-bottom: 1px solid rgba(184,145,80,0.28);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2.5rem; height: 56px;
+      overflow: hidden;
+    }
+    nav > * { position: relative; z-index: 1; }
+    nav::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(45deg,  rgba(121,197,240,0.07) 0 1px, transparent 1px 56px),
+        repeating-linear-gradient(-45deg, rgba(121,197,240,0.05) 0 1px, transparent 1px 56px);
+      mask-image: linear-gradient(to left, #000 0%, transparent 62%);
+      -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 62%);
     }
     .nav-brand { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; letter-spacing: 0.01em; color: var(--cyan); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.6rem; }
     .nav-logo { height: 26px; width: auto; display: block; }
     .nav-word { height: 15px; width: auto; display: block; }
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { font-size: 0.8125rem; color: var(--body); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--cyan-ink); }
-    .nav-links a.li { color: var(--cyan-ink); font-weight: 500; }
+    .nav-links a { font-size: 0.8125rem; color: #b9cbd9; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a.li { color: #79c5f0; font-weight: 500; }
     .nav-links a.active { color: var(--cyan-ink); font-weight: 500; }
 
     .nav-ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px 4px; }
-    .nav-ham span { display: block; width: 20px; height: 1.5px; background: var(--navy); transition: transform .25s, opacity .25s; transform-origin: center; }
+    .nav-ham span { display: block; width: 20px; height: 1.5px; background: #dbe6ee; transition: transform .25s, opacity .25s; transform-origin: center; }
     .nav-ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-ham.open span:nth-child(2) { opacity: 0; }
     .nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -315,9 +326,6 @@
     /* ── Páginas de prática ── */
     article ul { padding-left: 1.25rem; margin-bottom: 1.35rem; }
     article li { margin-bottom: 0.5rem; }
-    .page-contact { margin-top: 2.5rem; padding: 1.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
-    .page-contact p { margin: 0; font-size: 0.9375rem; }
-    .page-contact a { color: var(--cyan-ink); font-weight: 600; }
 
   </style>
 </head>
@@ -396,9 +404,6 @@ de recebíveis vencidos.</p>
         <li><a href="/artigos/fidc-energia-curtailment-ressarcimento/">O ressarcimento do curtailment virou recebível. Falta decidir de que tipo.</a></li>
         <li><a href="/artigos/duplicata-escritural-verificacao-de-lastro/">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></li>
       </ul>
-      <div class="page-contact">
-        <p>Para conversar sobre uma carteira: <a href="mailto:rennan@rmira.com.br">rennan@rmira.com.br</a></p>
-      </div>
     </article>
   </main>
   <section id="contato">
