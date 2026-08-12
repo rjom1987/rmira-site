@@ -185,11 +185,11 @@
     .section-desc { font-family: var(--serif); font-size: 1.18rem; font-weight: 300; line-height: 1.5; color: var(--ink); }
 
     .section.dark { background: var(--navy); border-bottom: none; }
-    #atuacao { padding-top: 1.5rem; padding-bottom: 2rem; scroll-margin-top: 46px; }
-    #atuacao .sec-label { margin-bottom: 1.25rem; }
-    #atuacao .section-header { margin-bottom: 1.75rem; }
-    #atuacao .cycle-step p { font-size: 0.82rem; line-height: 1.48; }
-    #atuacao .deepen { margin-top: 2rem; padding-top: 1.25rem; }
+    #atuacao { padding-top: 2.5rem; padding-bottom: 6rem; scroll-margin-top: 46px; }
+    #atuacao .sec-label { margin-bottom: 1.75rem; }
+    #atuacao .section-header { margin-bottom: 2.25rem; }
+    #atuacao .cycle-step p { font-size: 0.95rem; line-height: 1.8; }
+    #atuacao .deepen { margin-top: 3.25rem; padding-top: 2rem; }
     .section.dark .sec-label { color: #79c5f0; }
     .section.dark .section-title { color: #f2f6fa; }
     .section.dark .section-desc { color: #c4d4e3; }
@@ -266,16 +266,16 @@
     }
 
     /* ===== Atuação · régua do ciclo ===== */
-    .cycle-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.75rem; position: relative; margin-top: 2rem; }
+    .cycle-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.75rem; position: relative; margin-top: 2.75rem; }
     .cycle-rail::before { content: ''; position: absolute; top: 5px; left: 0; right: 0; height: 1px; background: rgba(242,246,250,0.22); }
-    .cycle-step { position: relative; padding-top: 1.4rem; }
+    .cycle-step { position: relative; padding-top: 1.75rem; }
     .cycle-step::before { content: ''; position: absolute; top: 0; left: 1px; width: 10px; height: 10px; border: 1.5px solid var(--cyan); background: var(--navy); transform: rotate(45deg); animation: cycleMark 12s infinite; }
     .cycle-step:nth-child(2)::before { animation-delay: 3s; }
     .cycle-step:nth-child(3)::before { animation-delay: 6s; }
     .cycle-step:nth-child(4)::before { animation-delay: 9s; }
     @keyframes cycleMark { 0%, 20% { background: var(--cyan); box-shadow: 0 0 0 4px rgba(11,158,225,0.16); } 27%, 100% { background: var(--navy); box-shadow: 0 0 0 0 rgba(11,158,225,0); } }
     .cycle-num { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; color: #79c5f0; }
-    .cycle-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: #f2f6fa; margin: 0.35rem 0 0.4rem; animation: cycleTitle 12s infinite; }
+    .cycle-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: #f2f6fa; margin: 0.4rem 0 0.55rem; animation: cycleTitle 12s infinite; }
     .cycle-step:nth-child(2) .cycle-title { animation-delay: 3s; }
     .cycle-step:nth-child(3) .cycle-title { animation-delay: 6s; }
     .cycle-step:nth-child(4) .cycle-title { animation-delay: 9s; }
