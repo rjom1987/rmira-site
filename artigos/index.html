@@ -350,18 +350,34 @@
     .article-list .item-meta { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; margin-bottom: 0.5rem; text-transform: uppercase; }
     .article-list .item-desc { font-size: 0.875rem; color: var(--body); }
 
-    /* ── Por tema / Arquivo / Na imprensa (artigos/) ── */
-    .por-tema { max-width: 720px; margin: 0 auto; padding: 0 1.5rem 3rem; }
-    .por-tema-title, .na-imprensa-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; font-family: var(--sans); }
-    .tema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-    .tema-card { border: 1px solid var(--line); border-radius: 4px; padding: 1.1rem 1.25rem; background: var(--surface); }
-    .tema-card h3 { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
-    .tema-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .tema-card a { color: var(--cyan-ink); text-decoration: none; font-size: 0.8125rem; }
-    .tema-card a:hover { text-decoration: underline; }
+    /* ── Carrossel de artigos (artigos/) — vertical, baixo → cima, encurtado ── */
+    .carousel-section { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 1rem; }
+    .carousel-viewport {
+      height: 280px; overflow: hidden; position: relative;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+    }
+    .carousel-track { display: flex; flex-direction: column; list-style: none; animation: carousel-scroll 38s linear infinite; }
+    .carousel-viewport:hover .carousel-track,
+    .carousel-viewport:focus-within .carousel-track { animation-play-state: paused; }
+    @keyframes carousel-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+    .carousel-card { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+    .carousel-meta { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--brass); margin-bottom: 0.4rem; }
+    .carousel-card h2 { margin: 0 0 0.3rem; font-size: 1.05rem; line-height: 1.3; }
+    .carousel-card h2 a { color: var(--ink); text-decoration: none; }
+    .carousel-card h2 a:hover { color: var(--cyan-ink); }
+    .carousel-card .item-desc { font-size: 0.82rem; color: var(--body); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-card--dup { display: none; }
+      .carousel-track { animation: none; }
+      .carousel-viewport { height: auto; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+    }
+
+    /* ── Arquivo / Na imprensa (artigos/) ── */
+    .arquivo-row { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 2rem; text-align: right; }
     .arquivo-link { display: inline-block; font-size: 0.875rem; color: var(--cyan-ink); text-decoration: none; border-bottom: 1px solid var(--cyan-ink); padding-bottom: 2px; }
-    @media (max-width: 600px) { .tema-grid { grid-template-columns: 1fr; } }
-    .na-imprensa { max-width: 720px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .na-imprensa { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    .na-imprensa-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
     .imprensa-list { list-style: none; display: flex; flex-direction: column; }
     .imprensa-item { padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
     .imprensa-item:last-child { border-bottom: none; }
@@ -404,118 +420,138 @@
     <div class="top-rule"></div>
     <div class="list-header">
       <h1 class="page-title">Artigos</h1>
-      <p class="list-desc">Análises técnicas sobre mercado de capitais, crédito estruturado, FIDC, securitização e recuperação de ativos. 16 publicados — os 12 mais recentes abaixo.</p>
+      <p class="list-desc">Análises técnicas sobre mercado de capitais, crédito estruturado, FIDC, securitização e recuperação de ativos.</p>
     </div>
-    <ul class="article-list">
-        <li>
-          <div class="item-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+  </main>
+  <section class="carousel-section" aria-label="Lista de artigos">
+    <div class="carousel-viewport">
+      <ul class="carousel-track">
+        <li class="carousel-card">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
           <h2><a href="/artigos/vasps-resolucoes-bcb-519-520-521/">Cripto com alvará: o que muda com as Resoluções 519, 520 e 521</a></h2>
           <p class="item-desc">O Banco Central regulamentou as prestadoras de serviços de ativos virtuais com autorização prévia, capital mínimo robusto e prazo de adequação. O mercado cripto brasileiro entra na era da licença.</p>
         </li>
-        <li>
-          <div class="item-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
           <h2><a href="/artigos/greenwashing-rotulados-verdes-taxonomia/">Rotulados verdes sob prova: greenwashing vira risco jurídico mensurável</a></h2>
           <p class="item-desc">Com o relato de sustentabilidade obrigatório a partir de 2026 e a taxonomia brasileira em implementação, a promessa ambiental deixa de ser marketing e passa a ser informação auditável.</p>
         </li>
-        <li>
-          <div class="item-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
           <h2><a href="/artigos/credito-do-trabalhador-consignado-privado/">Crédito do Trabalhador: o consignado privado como teste de desenho regulatório</a></h2>
           <p class="item-desc">A Lei 15.179/2025 digitalizou o consignado CLT e dispensou o convênio com o empregador. O resultado de curto prazo impressiona; as perguntas de médio prazo permanecem.</p>
         </li>
-        <li>
-          <div class="item-meta">Reforma Tributária &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
           <h2><a href="/artigos/split-payment-cg-ibs/">Split payment sob nova direção: o que muda com o CG-IBS</a></h2>
           <p class="item-desc">A LC 227/2026 instalou o Comitê Gestor do IBS e entregou a ele, com a Receita Federal, a chave da regulamentação do mecanismo que vai reter tributo dentro do fluxo de pagamentos.</p>
         </li>
-        <li>
-          <div class="item-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
           <h2><a href="/artigos/pl-458-regua-da-cvm/">O PL 458 e a régua da CVM</a></h2>
           <p class="item-desc">Desburocratizar o acesso ao mercado é acertado. Fazê-lo apagando informação do investidor é o retrocesso embutido no PL 458/2025.</p>
         </li>
-        <li>
-          <div class="item-meta">Reforma Tributária &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
           <h2><a href="/artigos/iof-integralizacao-de-cotas-fidc/">IOF na integralização de cotas de FIDC: alcance e efeitos da IN RFB 2.334/2026</a></h2>
           <p class="item-desc">A Receita Federal consolidou a incidência do IOF sobre a integralização de cotas de FIDC e alcançou expressamente a integralização em ativos.</p>
         </li>
-        <li>
-          <div class="item-meta">Reforma Tributária &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
           <h2><a href="/artigos/ibs-cbs-sobre-o-desagio/">IBS e CBS sobre o deságio: a tributação das operações do FIDC descaracterizado</a></h2>
           <p class="item-desc">A LC 214/2025 e a LC 227/2026 tributam o deságio nas operações do FIDC que não se qualifica como entidade de investimento, sob um teste comportamental.</p>
         </li>
-        <li>
-          <div class="item-meta">Reforma Tributária &middot; setembro de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
           <h2><a href="/artigos/split-payment-e-fundos/">Split payment e fundos de investimento: o que parametrizar em 2026 para não travar o caixa em 2027</a></h2>
           <p class="item-desc">O recolhimento automático de IBS e CBS na liquidação dos pagamentos eletrônicos chega em 2027 e altera a matéria-prima dos FIDCs de arranjos de pagamento.</p>
         </li>
-        <li>
-          <div class="item-meta">Reforma Tributária &middot; agosto de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Reforma Tributária &middot; agosto de 2026</div>
           <h2><a href="/artigos/regime-servicos-financeiros-lc-214/">O regime específico de serviços financeiros na reforma tributária</a></h2>
           <p class="item-desc">A LC 214/2025 tributa a margem das instituições financeiras, não a receita bruta — e é nessa escolha que o custo do crédito será reprecificado.</p>
         </li>
-        <li>
-          <div class="item-meta">Recuperação Judicial &middot; agosto de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Recuperação Judicial &middot; agosto de 2026</div>
           <h2><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/">Cessão de créditos por empresa em recuperação: o roteiro jurídico após a Resolução CVM 240</a></h2>
           <p class="item-desc">A norma destravou a aquisição por FIDC de créditos cedidos por recuperandas. O roteiro em quatro planos: concursal, contratual, de precificação e de governança do fundo comprador.</p>
         </li>
-        <li>
-          <div class="item-meta">Duplicata Escritural &middot; agosto de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
           <h2><a href="/artigos/duplicata-escritural-tokenizacao-rwa/">Duplicata escritural, tokenização e a hierarquia das fontes de verdade do crédito</a></h2>
           <p class="item-desc">Quando o token e o registro divergem, qual dos dois diz a verdade. A gramática contratual que subordina a representação em blockchain ao assento registral da duplicata escritural.</p>
         </li>
-        <li>
-          <div class="item-meta">Duplicata Escritural &middot; agosto de 2026</div>
+        <li class="carousel-card">
+          <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
           <h2><a href="/artigos/duplicata-escritural-verificacao-de-lastro/">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></h2>
           <p class="item-desc">O registro escritural resolve a camada de titularidade e circulação do título, e deixa intacta a camada de veracidade comercial. O efeito prático sobre o dever de verificação de lastro.</p>
         </li>
-    </ul>
-
-    <div class="por-tema">
-      <h2 class="por-tema-title">Por tema</h2>
-      <div class="tema-grid">
-        <div class="tema-card">
-          <h3>FIDC e energia</h3>
-          <ul>
-            <li><a href="/artigos/fidc-energia-lastro-cceal/">O lastro que ainda não foi gerado: CCEAL, verificação e o Anexo II</a></li>
-            <li><a href="/artigos/fidc-energia-recebivel-da-distribuidora/">A fatura de energia não circula como duplicata</a></li>
-            <li><a href="/artigos/fidc-energia-curtailment-ressarcimento/">O ressarcimento do curtailment virou recebível</a></li>
-          </ul>
-        </div>
-        <div class="tema-card">
-          <h3>Duplicata escritural e lastro</h3>
-          <ul>
-            <li><a href="/artigos/duplicata-escritural-tokenizacao-rwa/">Tokenização e a hierarquia das fontes de verdade</a></li>
-            <li><a href="/artigos/duplicata-escritural-verificacao-de-lastro/">A duplicata escritural entrou em operação</a></li>
-          </ul>
-        </div>
-        <div class="tema-card">
-          <h3>Recuperação judicial e crédito</h3>
-          <ul>
-            <li><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/">Cessão de créditos por empresa em recuperação</a></li>
-          </ul>
-        </div>
-        <div class="tema-card">
-          <h3>Reforma tributária e crédito estruturado</h3>
-          <ul>
-            <li><a href="/artigos/split-payment-cg-ibs/">Split payment sob nova direção (CG-IBS)</a></li>
-            <li><a href="/artigos/iof-integralizacao-de-cotas-fidc/">IOF na integralização de cotas de FIDC</a></li>
-            <li><a href="/artigos/ibs-cbs-sobre-o-desagio/">IBS e CBS sobre o deságio</a></li>
-            <li><a href="/artigos/split-payment-e-fundos/">Split payment e fundos de investimento</a></li>
-          </ul>
-        </div>
-        <div class="tema-card">
-          <h3>Regulação de mercado e conduta</h3>
-          <ul>
-            <li><a href="/artigos/vasps-resolucoes-bcb-519-520-521/">VASPs — Resoluções BCB 519, 520 e 521</a></li>
-            <li><a href="/artigos/greenwashing-rotulados-verdes-taxonomia/">Greenwashing e taxonomia</a></li>
-            <li><a href="/artigos/pl-458-regua-da-cvm/">O PL 458 e a régua da CVM</a></li>
-            <li><a href="/artigos/rcvm-175-um-ano-depois/">A Resolução CVM 175, um ano depois</a></li>
-            <li><a href="/artigos/credito-do-trabalhador-consignado-privado/">Crédito do Trabalhador</a></li>
-          </ul>
-        </div>
-      </div>
-      <a class="arquivo-link" href="/artigos/arquivo/">Ver todos os 16 artigos &rarr;</a>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+          <h2><a href="/artigos/vasps-resolucoes-bcb-519-520-521/" tabindex="-1">Cripto com alvará: o que muda com as Resoluções 519, 520 e 521</a></h2>
+          <p class="item-desc">O Banco Central regulamentou as prestadoras de serviços de ativos virtuais com autorização prévia, capital mínimo robusto e prazo de adequação. O mercado cripto brasileiro entra na era da licença.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+          <h2><a href="/artigos/greenwashing-rotulados-verdes-taxonomia/" tabindex="-1">Rotulados verdes sob prova: greenwashing vira risco jurídico mensurável</a></h2>
+          <p class="item-desc">Com o relato de sustentabilidade obrigatório a partir de 2026 e a taxonomia brasileira em implementação, a promessa ambiental deixa de ser marketing e passa a ser informação auditável.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+          <h2><a href="/artigos/credito-do-trabalhador-consignado-privado/" tabindex="-1">Crédito do Trabalhador: o consignado privado como teste de desenho regulatório</a></h2>
+          <p class="item-desc">A Lei 15.179/2025 digitalizou o consignado CLT e dispensou o convênio com o empregador. O resultado de curto prazo impressiona; as perguntas de médio prazo permanecem.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
+          <h2><a href="/artigos/split-payment-cg-ibs/" tabindex="-1">Split payment sob nova direção: o que muda com o CG-IBS</a></h2>
+          <p class="item-desc">A LC 227/2026 instalou o Comitê Gestor do IBS e entregou a ele, com a Receita Federal, a chave da regulamentação do mecanismo que vai reter tributo dentro do fluxo de pagamentos.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Regulação de mercado e conduta &middot; setembro de 2026</div>
+          <h2><a href="/artigos/pl-458-regua-da-cvm/" tabindex="-1">O PL 458 e a régua da CVM</a></h2>
+          <p class="item-desc">Desburocratizar o acesso ao mercado é acertado. Fazê-lo apagando informação do investidor é o retrocesso embutido no PL 458/2025.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
+          <h2><a href="/artigos/iof-integralizacao-de-cotas-fidc/" tabindex="-1">IOF na integralização de cotas de FIDC: alcance e efeitos da IN RFB 2.334/2026</a></h2>
+          <p class="item-desc">A Receita Federal consolidou a incidência do IOF sobre a integralização de cotas de FIDC e alcançou expressamente a integralização em ativos.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
+          <h2><a href="/artigos/ibs-cbs-sobre-o-desagio/" tabindex="-1">IBS e CBS sobre o deságio: a tributação das operações do FIDC descaracterizado</a></h2>
+          <p class="item-desc">A LC 214/2025 e a LC 227/2026 tributam o deságio nas operações do FIDC que não se qualifica como entidade de investimento, sob um teste comportamental.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Reforma Tributária &middot; setembro de 2026</div>
+          <h2><a href="/artigos/split-payment-e-fundos/" tabindex="-1">Split payment e fundos de investimento: o que parametrizar em 2026 para não travar o caixa em 2027</a></h2>
+          <p class="item-desc">O recolhimento automático de IBS e CBS na liquidação dos pagamentos eletrônicos chega em 2027 e altera a matéria-prima dos FIDCs de arranjos de pagamento.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Reforma Tributária &middot; agosto de 2026</div>
+          <h2><a href="/artigos/regime-servicos-financeiros-lc-214/" tabindex="-1">O regime específico de serviços financeiros na reforma tributária</a></h2>
+          <p class="item-desc">A LC 214/2025 tributa a margem das instituições financeiras, não a receita bruta — e é nessa escolha que o custo do crédito será reprecificado.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Recuperação Judicial &middot; agosto de 2026</div>
+          <h2><a href="/artigos/cessao-de-creditos-recuperanda-rcvm-240/" tabindex="-1">Cessão de créditos por empresa em recuperação: o roteiro jurídico após a Resolução CVM 240</a></h2>
+          <p class="item-desc">A norma destravou a aquisição por FIDC de créditos cedidos por recuperandas. O roteiro em quatro planos: concursal, contratual, de precificação e de governança do fundo comprador.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+          <h2><a href="/artigos/duplicata-escritural-tokenizacao-rwa/" tabindex="-1">Duplicata escritural, tokenização e a hierarquia das fontes de verdade do crédito</a></h2>
+          <p class="item-desc">Quando o token e o registro divergem, qual dos dois diz a verdade. A gramática contratual que subordina a representação em blockchain ao assento registral da duplicata escritural.</p>
+        </li>
+        <li class="carousel-card carousel-card--dup" aria-hidden="true">
+          <div class="carousel-meta">Duplicata Escritural &middot; agosto de 2026</div>
+          <h2><a href="/artigos/duplicata-escritural-verificacao-de-lastro/" tabindex="-1">A duplicata escritural entrou em operação: o que muda para quem financia recebível</a></h2>
+          <p class="item-desc">O registro escritural resolve a camada de titularidade e circulação do título, e deixa intacta a camada de veracidade comercial. O efeito prático sobre o dever de verificação de lastro.</p>
+        </li>
+      </ul>
     </div>
-
+  </section>
+  <div class="arquivo-row">
+    <a class="arquivo-link" href="/artigos/arquivo/">Ver arquivo completo &rarr;</a>
+  </div>
     <div class="na-imprensa">
       <h2 class="na-imprensa-title">Na imprensa</h2>
       <ul class="imprensa-list">
@@ -531,7 +567,6 @@
         </li>
       </ul>
     </div>
-  </main>
   <section id="contato">
     <div class="contato-top">
       <div class="contato-top-in">
