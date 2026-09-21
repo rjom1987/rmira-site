@@ -13,6 +13,7 @@
   'use strict';
 
   var ACK_KEY = 'rmira_legal_ack_v1';
+  var ANTIFRAUD_KEY = 'rmira_antifraud_ack_v1';
 
   function el(tag, attrs, children) {
     var node = document.createElement(tag);
@@ -215,6 +216,9 @@
       + 'cobrança ou envio de dados sensíveis — verifique o domínio do remetente e confirme diretamente com o '
       + 'escritório pelo canal oficial abaixo.</p>'
       + '<p>Comunicações suspeitas devem ser reportadas por esse mesmo canal.</p>'
+      + '<p>Este site também não usa cookies de rastreamento, análise ou publicidade — apenas o que for '
+      + 'estritamente necessário para funcionar com segurança. Detalhes na '
+      + '<a href="/privacidade/">Política de Privacidade</a>.</p>'
       + '<p><strong>Canal oficial de confirmação:</strong><br>'
       + '<a href="mailto:contato@rmira.com.br">contato@rmira.com.br</a> &middot; '
       + '<a href="https://rmira.com.br" target="_blank" rel="noopener">rmira.com.br</a></p>';
@@ -268,12 +272,25 @@
     });
   }
 
+  function autoShowAntifraud(antifraudOverlay) {
+    // Já está na página completa do aviso — não precisa do modal por cima.
+    if (window.location.pathname.indexOf('/seguranca') === 0) return;
+    var seen = false;
+    try { seen = !!localStorage.getItem(ANTIFRAUD_KEY); } catch (e) { /* segue como não visto */ }
+    if (seen) return;
+    window.setTimeout(function () {
+      openOverlay(antifraudOverlay);
+      try { localStorage.setItem(ANTIFRAUD_KEY, String(Date.now())); } catch (e) { /* só não lembra na próxima visita */ }
+    }, 600);
+  }
+
   function init() {
     injectStyle();
     var prefsOverlay = buildPreferencesModal();
     var antifraudOverlay = buildAntifraudModal();
     buildBar(prefsOverlay);
     wireFooterSecurityLinks(antifraudOverlay);
+    autoShowAntifraud(antifraudOverlay);
   }
 
   if (document.readyState === 'loading') {
