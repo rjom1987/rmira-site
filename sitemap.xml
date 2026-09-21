@@ -11,6 +11,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://rmira.com.br/privacidade/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://rmira.com.br/seguranca/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://rmira.com.br/artigos/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
